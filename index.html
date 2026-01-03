@@ -2,130 +2,134 @@
 <html lang="en">
 <head>
 <meta charset="UTF-8">
-<meta name="viewport" content="width=device-width, initial-scale=1.0">
 <title>UpNext</title>
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
 
 <style>
-* {
-  margin: 0;
-  padding: 0;
-  box-sizing: border-box;
-  font-family: Arial, Helvetica, sans-serif;
+*{margin:0;padding:0;box-sizing:border-box;font-family:sans-serif}
+body{
+  background:black;
+  color:white;
+  overflow:hidden;
+}
+header{
+  position:fixed;
+  top:0;
+  width:100%;
+  height:60px;
+  background:rgba(0,0,0,0.9);
+  display:flex;
+  align-items:center;
+  justify-content:center;
+  font-weight:bold;
+  letter-spacing:1px;
+  z-index:10;
+}
+header span{color:#1e90ff}
+
+.feed{
+  margin-top:60px;
+  height:calc(100vh - 60px);
+  overflow-y:scroll;
+  scroll-snap-type:y mandatory;
 }
 
-body {
-  background: #000;
-  color: #fff;
-  overflow: hidden;
+.video-card{
+  height:100vh;
+  scroll-snap-align:start;
+  display:flex;
+  align-items:center;
+  justify-content:center;
+  position:relative;
 }
 
-/* Header */
-header {
-  position: fixed;
-  top: 0;
-  width: 100%;
-  padding: 14px;
-  text-align: center;
-  font-weight: bold;
-  letter-spacing: 1px;
-  background: linear-gradient(to bottom, #000, transparent);
-  z-index: 10;
+video{
+  width:100%;
+  height:100%;
+  object-fit:cover;
 }
 
-/* Upload button */
-.upload {
-  position: fixed;
-  top: 55px;
-  right: 15px;
-  background: #1e90ff;
-  color: #fff;
-  border: none;
-  padding: 8px 14px;
-  border-radius: 20px;
-  font-size: 13px;
-  font-weight: bold;
-  cursor: pointer;
-  z-index: 10;
+.actions{
+  position:absolute;
+  right:15px;
+  bottom:120px;
+  display:flex;
+  flex-direction:column;
+  gap:18px;
+}
+.action{
+  text-align:center;
+  color:white;
+  font-size:14px;
 }
 
-/* Feed */
-.feed {
-  height: 100vh;
-  overflow-y: scroll;
-  scroll-snap-type: y mandatory;
+.bottom-bar{
+  position:fixed;
+  bottom:0;
+  width:100%;
+  height:70px;
+  background:black;
+  display:flex;
+  justify-content:space-around;
+  align-items:center;
+  border-top:1px solid #1e90ff;
+}
+.tab{
+  color:white;
+  opacity:0.7;
+}
+.tab.active{
+  color:#1e90ff;
+  opacity:1;
 }
 
-/* Post */
-.post {
-  height: 100vh;
-  scroll-snap-align: start;
-  position: relative;
-  background: #000;
-}
-
-/* Video placeholder (clean) */
-.video {
-  width: 100%;
-  height: 100%;
-  background: radial-gradient(circle at center, #111, #000);
-}
-
-/* Actions */
-.actions {
-  position: absolute;
-  right: 15px;
-  bottom: 140px;
-  display: flex;
-  flex-direction: column;
-  gap: 20px;
-  text-align: center;
-  font-size: 18px;
-}
-
-.actions span {
-  color: #fff;
-}
-
-/* Info */
-.info {
-  position: absolute;
-  left: 15px;
-  bottom: 70px;
-  max-width: 70%;
-}
-
-.username {
-  font-weight: bold;
-  margin-bottom: 4px;
-}
-
-.caption {
-  font-size: 14px;
-  color: #ccc;
-}
-
-/* Categories */
-.categories {
-  position: fixed;
-  bottom: 10px;
-  width: 100%;
-  display: flex;
-  justify-content: center;
-  gap: 10px;
-  font-size: 12px;
-  z-index: 10;
-}
-
-.category {
-  padding: 6px 12px;
-  border: 1px solid #1e90ff;
-  border-radius: 20px;
-  color: #1e90ff;
-}
-
-/* Hide scrollbar */
-.feed::-webkit-scrollbar {
-  display: none;
+.earn{
+  position:fixed;
+  top:70px;
+  left:10px;
+  background:rgba(30,144,255,0.15);
+  border:1px solid #1e90ff;
+  padding:8px 12px;
+  border-radius:20px;
+  font-size:12px;
 }
 </style>
 </head>
+
+<body>
+
+<header>UpNext <span>•</span> Trending</header>
+
+<div class="earn">💰 Earn via views • tips • sponsors</div>
+
+<div class="feed">
+
+  <div class="video-card">
+    <video autoplay muted loop src="https://www.w3schools.com/html/mov_bbb.mp4"></video>
+    <div class="actions">
+      <div class="action">❤️<br>1.2k</div>
+      <div class="action">💬<br>230</div>
+      <div class="action">↗️</div>
+    </div>
+  </div>
+
+  <div class="video-card">
+    <video autoplay muted loop src="https://www.w3schools.com/html/movie.mp4"></video>
+    <div class="actions">
+      <div class="action">❤️<br>980</div>
+      <div class="action">💬<br>88</div>
+      <div class="action">↗️</div>
+    </div>
+  </div>
+
+</div>
+
+<div class="bottom-bar">
+  <div class="tab active">Trending</div>
+  <div class="tab">Create</div>
+  <div class="tab">Earnings</div>
+  <div class="tab">Profile</div>
+</div>
+
+</body>
+  </html>
