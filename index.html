@@ -6,195 +6,126 @@
 <title>UpNext</title>
 
 <style>
-* { margin:0; padding:0; box-sizing:border-box; font-family: Arial, Helvetica, sans-serif; }
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+  font-family: Arial, Helvetica, sans-serif;
+}
 
 body {
-  background:#000;
-  color:#fff;
-  overflow:hidden;
+  background: #000;
+  color: #fff;
+  overflow: hidden;
 }
 
 /* Header */
 header {
-  position:fixed;
-  top:0;
-  width:100%;
-  padding:15px;
-  text-align:center;
-  font-weight:bold;
-  letter-spacing:1px;
-  background:linear-gradient(to bottom,#000,transparent);
-  z-index:10;
+  position: fixed;
+  top: 0;
+  width: 100%;
+  padding: 14px;
+  text-align: center;
+  font-weight: bold;
+  letter-spacing: 1px;
+  background: linear-gradient(to bottom, #000, transparent);
+  z-index: 10;
 }
 
-/* Upload */
+/* Upload button */
 .upload {
-  position:fixed;
-  top:60px;
-  right:15px;
-  background:#fff;
-  color:#000;
-  border:none;
-  padding:8px 14px;
-  border-radius:20px;
-  font-size:13px;
-  font-weight:bold;
-  z-index:10;
+  position: fixed;
+  top: 55px;
+  right: 15px;
+  background: #1e90ff;
+  color: #fff;
+  border: none;
+  padding: 8px 14px;
+  border-radius: 20px;
+  font-size: 13px;
+  font-weight: bold;
+  cursor: pointer;
+  z-index: 10;
 }
 
 /* Feed */
 .feed {
-  height:100vh;
-  overflow-y:scroll;
-  scroll-snap-type:y mandatory;
+  height: 100vh;
+  overflow-y: scroll;
+  scroll-snap-type: y mandatory;
 }
 
 /* Post */
 .post {
-  height:100vh;
-  scroll-snap-align:start;
-  position:relative;
-  background:#111;
+  height: 100vh;
+  scroll-snap-align: start;
+  position: relative;
+  background: #000;
 }
 
-/* Video placeholder */
+/* Video placeholder (clean) */
 .video {
-  width:100%;
-  height:100%;
-  background:linear-gradient(180deg,#111,#000);
-  display:flex;
-  align-items:center;
-  justify-content:center;
-  font-size:22px;
-  color:#666;
+  width: 100%;
+  height: 100%;
+  background: radial-gradient(circle at center, #111, #000);
 }
 
 /* Actions */
 .actions {
-  position:absolute;
-  right:15px;
-  bottom:140px;
-  display:flex;
-  flex-direction:column;
-  gap:20px;
-  text-align:center;
+  position: absolute;
+  right: 15px;
+  bottom: 140px;
+  display: flex;
+  flex-direction: column;
+  gap: 20px;
+  text-align: center;
+  font-size: 18px;
 }
 
-.actions div { cursor:pointer; }
+.actions span {
+  color: #fff;
+}
 
 /* Info */
 .info {
-  position:absolute;
-  left:15px;
-  bottom:60px;
-  max-width:70%;
+  position: absolute;
+  left: 15px;
+  bottom: 70px;
+  max-width: 70%;
 }
 
-.username { font-weight:bold; margin-bottom:5px; }
-.caption { font-size:14px; color:#ccc; }
+.username {
+  font-weight: bold;
+  margin-bottom: 4px;
+}
 
-/* Monetization banner */
-.money {
-  position:absolute;
-  bottom:15px;
-  left:15px;
-  font-size:12px;
-  color:#aaa;
-  border-left:3px solid #fff;
-  padding-left:8px;
+.caption {
+  font-size: 14px;
+  color: #ccc;
 }
 
 /* Categories */
 .categories {
-  position:fixed;
-  bottom:10px;
-  width:100%;
-  display:flex;
-  justify-content:center;
-  gap:10px;
-  font-size:12px;
-  z-index:10;
+  position: fixed;
+  bottom: 10px;
+  width: 100%;
+  display: flex;
+  justify-content: center;
+  gap: 10px;
+  font-size: 12px;
+  z-index: 10;
 }
 
 .category {
-  padding:6px 10px;
-  border:1px solid #333;
-  border-radius:20px;
+  padding: 6px 12px;
+  border: 1px solid #1e90ff;
+  border-radius: 20px;
+  color: #1e90ff;
 }
 
 /* Hide scrollbar */
-.feed::-webkit-scrollbar { display:none; }
+.feed::-webkit-scrollbar {
+  display: none;
+}
 </style>
 </head>
-
-<body>
-
-<header>UpNext · Trending</header>
-<button class="upload" onclick="uploadDemo()">Upload</button>
-
-<div class="feed">
-
-  <!-- TRENDING VIDEO 1 -->
-  <div class="post">
-    <div class="video">🔥 Trending Dance</div>
-    <div class="actions">
-      <div>🤍<br>1.2k</div>
-      <div>💬<br>120</div>
-      <div>↗</div>
-    </div>
-    <div class="info">
-      <div class="username">@afrodancer</div>
-      <div class="caption">Kenyan vibes only 🇰🇪🔥</div>
-    </div>
-    <div class="money">Earns via Ads & Brand Deals</div>
-  </div>
-
-  <!-- TRENDING VIDEO 2 -->
-  <div class="post">
-    <div class="video">😂 Trending Comedy</div>
-    <div class="actions">
-      <div>🤍<br>980</div>
-      <div>💬<br>88</div>
-      <div>↗</div>
-    </div>
-    <div class="info">
-      <div class="username">@comiczone</div>
-      <div class="caption">Laughter is money 😄</div>
-    </div>
-    <div class="money">Earns via Tips & Sponsorships</div>
-  </div>
-
-  <!-- TRENDING VIDEO 3 -->
-  <div class="post">
-    <div class="video">✨ Trending Creative</div>
-    <div class="actions">
-      <div>🤍<br>2.3k</div>
-      <div>💬<br>210</div>
-      <div>↗</div>
-    </div>
-    <div class="info">
-      <div class="username">@visualpro</div>
-      <div class="caption">Creativity pays 💡</div>
-    </div>
-    <div class="money">Earns via Creator Fund</div>
-  </div>
-
-</div>
-
-<div class="categories">
-  <div class="category">Dance</div>
-  <div class="category">Comedy</div>
-  <div class="category">Creative</div>
-  <div class="category">Trending</div>
-</div>
-
-<script>
-function uploadDemo() {
-  alert(
-    "Upload coming soon 🚀\n\nYou will earn money via:\n• Ads on videos\n• Creator tips\n• Brand sponsorships\n• Creator fund"
-  );
-}
-</script>
-
-</body>
-</html>
