@@ -9,13 +9,13 @@
 body{
   margin:0;
   font-family: Arial, sans-serif;
-  background: linear-gradient(180deg,#050b1a,#000);
+  background: linear-gradient(180deg,#060c1f,#000);
   color:white;
   text-align:center;
 }
 header{
-  background:#0a33ff;
-  padding:15px;
+  background:#0a3cff;
+  padding:18px;
   font-size:26px;
   font-weight:bold;
 }
@@ -23,27 +23,31 @@ header{
   padding:20px;
 }
 button{
-  background:#0a33ff;
+  background:#0a3cff;
   color:white;
   border:none;
-  padding:12px 18px;
+  padding:12px 20px;
   margin:8px;
-  border-radius:10px;
+  border-radius:12px;
   font-size:16px;
   cursor:pointer;
 }
 button:hover{opacity:0.85;}
 .card{
-  background:#0d1430;
-  border-radius:15px;
+  background:#0e1638;
+  border-radius:18px;
   padding:20px;
   margin:20px auto;
-  max-width:400px;
+  max-width:420px;
+}
+.small{
+  font-size:13px;
+  opacity:0.8;
 }
 .footer{
   margin-top:30px;
-  font-size:13px;
-  opacity:0.8;
+  font-size:12px;
+  opacity:0.7;
 }
 </style>
 </head>
@@ -53,36 +57,56 @@ button:hover{opacity:0.85;}
 <header>IdeaSpark ✨</header>
 
 <div class="container">
-  <p>Tap a category to get a content idea 👇</p>
 
-  <div>
-    <button onclick="idea('dance')">Dance</button>
-    <button onclick="idea('quotes')">Quotes</button>
-    <button onclick="idea('comedy')">Comedy</button>
-    <button onclick="idea('motivation')">Motivation</button>
-    <button onclick="idea('school')">School Life</button>
-  </div>
+<p>Stuck on what to post? Get instant content ideas 👇</p>
 
-  <div class="card" id="ideaBox">
-    Choose a category to see ideas
-  </div>
+<div>
+  <button onclick="getIdea('dance')">Dance</button>
+  <button onclick="getIdea('comedy')">Comedy</button>
+  <button onclick="getIdea('quotes')">Quotes</button>
+  <button onclick="getIdea('school')">School Life</button>
+  <button onclick="getIdea('motivation')">Motivation</button>
+</div>
 
-  <button onclick="nextIdea()">Next Idea</button>
+<div class="card" id="ideaBox">
+  Choose a category to get ideas
+</div>
 
-  <div class="card">
-    🔒 Ad space (Ads will appear here when eligible)<br>
-    Grow traffic now to earn later 💰
-  </div>
+<button onclick="nextIdea()">Next Idea</button>
 
-  <!-- Visitor Counter -->
-  <div style="margin-top:20px;font-size:14px;">
-    👀 Visitors:
-    <img src="https://visitorbadge.io/api/visitors?path=ideaspark" alt="Visitors">
-  </div>
+<!-- SIGN UP -->
+<div class="card">
+  <h3>Get More Ideas 🔥</h3>
+  <p>Sign up to receive exclusive content ideas & updates</p>
+  <a href="PASTE_YOUR_GOOGLE_FORM_LINK_HERE" target="_blank">
+    <button>Sign Up (FREE)</button>
+  </a>
+  <p class="small">No spam · No passwords · Free forever</p>
+</div>
 
-  <div class="footer">
-    © 2026 IdeaSpark · Built with ❤️
-  </div>
+<!-- EARNING INFO -->
+<div class="card">
+  <h3>How This Earns 💰</h3>
+  <p class="small">
+    IdeaSpark is growing a real audience.<br><br>
+    When traffic grows:
+    • Brands become interested<br>
+    • Ads can be added (18+)<br>
+    • Paid features can be unlocked later<br><br>
+    Starting early = winning later 🚀
+  </p>
+</div>
+
+<!-- VISITOR COUNTER -->
+<div style="margin-top:20px;font-size:14px;">
+  👀 Visitors:
+  <img src="https://visitorbadge.io/api/visitors?path=ideaspark" alt="Visitors">
+</div>
+
+<div class="footer">
+  © 2026 IdeaSpark · Built with ❤️
+</div>
+
 </div>
 
 <script>
@@ -91,47 +115,50 @@ dance:[
 "Simple footwork challenge",
 "Before vs After dance",
 "Slow motion dance move",
-"Dance with school uniform"
-],
-quotes:[
-"Quote about discipline",
-"Success quote with calm music",
-"Short quote on consistency"
+"Dance with school uniform",
+"Mirror dance challenge"
 ],
 comedy:[
 "Teacher vs student skit",
 "Expectation vs reality",
-"Funny school moment"
+"Funny school moment",
+"Relatable student life joke"
 ],
-motivation:[
-"Don’t give up message",
-"Study motivation video",
-"Hard work pays clip"
+quotes:[
+"Short success quote with calm music",
+"Discipline quote",
+"Consistency quote for creators"
 ],
 school:[
 "Day in school life",
+"Study routine",
 "School rules comedy",
-"Study routine"
+"Packing my school bag"
+],
+motivation:[
+"Don’t give up message",
+"Hard work pays clip",
+"Morning motivation video"
 ]
 };
 
-let current=[];
+let currentIdeas=[];
 
-function idea(cat){
-  current=ideas[cat];
-  document.getElementById("ideaBox").innerText=
-    current[Math.floor(Math.random()*current.length)];
+function getIdea(type){
+  currentIdeas = ideas[type];
+  document.getElementById("ideaBox").innerText =
+    currentIdeas[Math.floor(Math.random()*currentIdeas.length)];
 }
 
 function nextIdea(){
-  if(current.length===0){
+  if(currentIdeas.length===0){
     alert("Choose a category first");
     return;
   }
-  document.getElementById("ideaBox").innerText=
-    current[Math.floor(Math.random()*current.length)];
+  document.getElementById("ideaBox").innerText =
+    currentIdeas[Math.floor(Math.random()*currentIdeas.length)];
 }
 </script>
 
 </body>
-</html>
+    </html>
