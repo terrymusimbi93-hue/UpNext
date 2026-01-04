@@ -2,252 +2,246 @@
 <html lang="en">
 <head>
 <meta charset="UTF-8">
+<title>TERRY MUSIMBI • Viral Creator Website</title>
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>Creator Growth Hub</title>
 
-<meta name="description" content="Content ideas, creator tools, and legal ways to earn from TikTok, YouTube, and Instagram.">
-<meta name="keywords" content="content ideas, creators, TikTok ideas, YouTube growth, Instagram reels">
-<meta name="author" content="Creator Growth Hub">
+<meta name="description" content="Viral videos, content ideas, and legal earning. Owned by TERRY MUSIMBI.">
+<meta name="theme-color" content="#0a58ff">
+
+<!-- AdSense placeholder (add after approval with guardian help) -->
+<!--
+<script async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=ca-pub-XXXX"
+crossorigin="anonymous"></script>
+-->
 
 <style>
-body{
-  margin:0;
-  font-family: Arial, sans-serif;
-  background:linear-gradient(135deg,#020617,#020d2d);
-  color:white;
+:root{
+  --blue:#0a58ff;
+  --black:#000;
+  --white:#fff;
+  --bg:#000;
+  --card:rgba(255,255,255,.08);
 }
-.container{
-  max-width:440px;
-  margin:auto;
-  padding:16px;
+.light{
+  --bg:#f4f7ff;
+  --card:#fff;
+  --black:#fff;
+  --white:#000;
 }
-.card{
-  background:rgba(255,255,255,0.06);
-  border-radius:20px;
-  padding:20px;
-  margin-bottom:18px;
-  box-shadow:0 15px 35px rgba(0,0,0,0.45);
+*{box-sizing:border-box;margin:0;padding:0;font-family:system-ui}
+body{background:var(--bg);color:var(--white);transition:.3s}
+
+/* NAV */
+nav{
+  position:fixed;top:0;width:100%;z-index:50;
+  display:flex;justify-content:space-between;align-items:center;
+  padding:12px 18px;
+  background:rgba(0,0,0,.6);
+  backdrop-filter:blur(14px);
 }
-h1,h2,h3{
-  margin-top:0;
+nav h1{color:var(--blue);font-size:16px}
+nav button{
+  background:var(--blue);border:none;color:#fff;
+  padding:6px 12px;border-radius:20px;cursor:pointer;font-size:12px
 }
-select,input,button{
-  width:100%;
-  padding:12px;
-  margin-top:10px;
-  border-radius:12px;
-  border:none;
-  font-size:15px;
-}
-select,input{
-  background:#020617;
-  color:white;
-}
-button{
-  background:#2563eb;
-  color:white;
-  font-weight:bold;
-  cursor:pointer;
-}
-button:hover{
-  background:#1d4ed8;
-}
-ul{
-  padding-left:18px;
-}
-li{
-  margin-bottom:8px;
-}
-iframe{
-  width:100%;
-  height:200px;
-  border-radius:12px;
-  margin-top:10px;
-}
-.small{
-  font-size:13px;
-  opacity:0.8;
-}
-.footer{
+
+/* HERO */
+.hero{
+  padding:100px 20px 40px;
   text-align:center;
-  font-size:12px;
-  opacity:0.6;
-  margin:20px 0;
 }
-.badge{
-  display:inline-block;
-  background:#0f172a;
-  padding:6px 10px;
-  border-radius:10px;
-  font-size:12px;
-  margin-bottom:8px;
+.hero h2{font-size:28px;margin-bottom:10px}
+.hero p{opacity:.8}
+
+/* CARDS */
+section{padding:30px 20px}
+.card{
+  background:var(--card);
+  border-radius:18px;
+  padding:22px;
+  margin-bottom:20px;
+  backdrop-filter:blur(14px);
+}
+.card h3{color:var(--blue);margin-bottom:10px}
+.grid{
+  display:grid;
+  grid-template-columns:repeat(auto-fit,minmax(220px,1fr));
+  gap:16px;
+}
+
+/* BUTTON */
+.btn{
+  background:var(--blue);
+  color:#fff;
+  border:none;
+  padding:12px 18px;
+  border-radius:12px;
+  cursor:pointer;
+  font-weight:600;
+}
+
+/* VIDEO FEED */
+.feed{
+  height:80vh;
+  overflow-y:auto;
+  scroll-snap-type:y mandatory;
+}
+.video{
+  height:80vh;
+  scroll-snap-align:start;
+}
+.video iframe{
+  width:100%;
+  height:100%;
+  border:none;
+  border-radius:16px;
+}
+
+/* FOOTER */
+footer{
+  text-align:center;
+  padding:30px 20px;
+  font-size:13px;
+  opacity:.7;
+  border-top:1px solid rgba(255,255,255,.1);
+}
+
+/* COUNTER */
+.counter{
+  font-size:22px;
+  color:var(--blue);
+  font-weight:700;
 }
 </style>
 </head>
 
 <body>
 
-<div class="container">
+<nav>
+  <h1>TERRY MUSIMBI</h1>
+  <button onclick="toggleMode()">Dark / Light</button>
+</nav>
 
-<!-- HERO -->
-<div class="card">
-  <span class="badge">Creator Platform</span>
-  <h1>🚀 Creator Growth Hub</h1>
-  <p class="small">
-    Smart content ideas • Real inspiration • Legal earning methods
-  </p>
+<div class="hero">
+  <h2>Viral Content • Smart Ideas • Legal Earnings</h2>
+  <p>Modern creator website built to grow & monetize safely</p>
 </div>
 
-<!-- PLATFORM -->
-<div class="card">
-  <h2>Select Platform</h2>
-  <select id="platform" onchange="loadAll()">
-    <option value="TikTok">TikTok</option>
-    <option value="YouTube">YouTube</option>
-    <option value="Instagram">Instagram</option>
-  </select>
-</div>
+<section>
+  <div class="card">
+    <h3>📊 Visitors</h3>
+    <p class="counter" id="visits">0</p>
+    <p style="opacity:.7;font-size:13px">Demo counter (real analytics added later)</p>
+  </div>
+</section>
 
-<!-- IDEAS -->
-<div class="card">
-  <h2>Content Ideas</h2>
-  <ul id="ideas"></ul>
-  <p class="small">Short, proven ideas that actually work.</p>
-</div>
+<section>
+  <div class="card">
+    <h3>🎥 Viral Videos</h3>
+    <div class="feed">
+      <div class="video">
+        <iframe src="https://www.youtube.com/embed/9bZkp7q19f0?mute=1"></iframe>
+      </div>
+      <div class="video">
+        <iframe src="https://www.youtube.com/embed/dQw4w9WgXcQ?mute=1"></iframe>
+      </div>
+    </div>
+  </div>
+</section>
 
-<!-- VIDEOS -->
-<div class="card">
-  <h2>Inspiration Videos</h2>
-  <div id="videos"></div>
-  <p class="small">Embedded public videos (100% legal).</p>
-</div>
+<section>
+  <div class="card">
+    <h3>💡 Viral Content Ideas</h3>
+    <div class="grid">
+      <div>
+        <b>TikTok / Reels</b>
+        <ul>
+          <li>Nobody tells you this…</li>
+          <li>Fast facts</li>
+          <li>Before vs After</li>
+          <li>Text story hooks</li>
+        </ul>
+      </div>
+      <div>
+        <b>YouTube Shorts</b>
+        <ul>
+          <li>AI tools demo</li>
+          <li>Top 3 lists</li>
+          <li>Life hacks</li>
+          <li>Motivation clips</li>
+        </ul>
+      </div>
+      <div>
+        <b>Instagram</b>
+        <ul>
+          <li>Carousel tips</li>
+          <li>Quote reels</li>
+          <li>Behind the scenes</li>
+          <li>Mini tutorials</li>
+        </ul>
+      </div>
+    </div>
+  </div>
+</section>
 
-<!-- EARN -->
-<div class="card">
-  <h2>How You Earn From This Website</h2>
-  <ul>
-    <li><b>Affiliate links:</b> Recommend tools & apps</li>
-    <li><b>Display ads:</b> Google AdSense (after approval)</li>
-    <li><b>Premium access:</b> Lock advanced ideas</li>
-    <li><b>Brand interest:</b> Traffic attracts deals</li>
-  </ul>
-  <p class="small">
-    No bots • No fake views • Platform-safe methods only
-  </p>
-</div>
+<section>
+  <div class="card">
+    <h3>🤖 AI Idea Generator</h3>
+    <p id="idea">Click to generate a viral idea</p>
+    <br>
+    <button class="btn" onclick="generateIdea()">Generate Idea</button>
+  </div>
+</section>
 
-<!-- AFFILIATE -->
-<div class="card">
-  <h2>Recommended Creator Tools</h2>
-  <ul>
-    <li>Video editing apps</li>
-    <li>Caption & hashtag tools</li>
-    <li>Content planners</li>
-    <li>Thumbnail & design tools</li>
-  </ul>
-  <p class="small">
-    Affiliate links can be added later without changing design.
-  </p>
-</div>
+<section>
+  <div class="card">
+    <h3>💵 How Money Works</h3>
+    <ul>
+      <li><b>TERRY MUSIMBI earns more:</b> AdSense & affiliates</li>
+      <li><b>Users earn less:</b> points & rewards</li>
+      <li>No guaranteed income</li>
+    </ul>
+  </div>
+</section>
 
-<!-- SIGN UP -->
-<div class="card">
-  <h2>Create Free Account</h2>
-  <input type="text" placeholder="Username">
-  <input type="email" placeholder="Email">
-  <button>Create Account</button>
-  <p class="small">
-    Accounts unlock more ideas and future features.
-  </p>
-</div>
+<section>
+  <div class="card">
+    <h3>📜 Legal</h3>
+    <p><b>Privacy Policy:</b> We respect user data.</p>
+    <p><b>Terms:</b> Use responsibly.</p>
+    <p><b>Disclaimer:</b> Earnings not guaranteed.</p>
+  </div>
+</section>
 
-<!-- PRIVACY -->
-<div class="card">
-  <h3>Privacy Policy</h3>
-  <p class="small">
-    We respect your privacy. No personal data is sold.
-    Analytics and ads may be used to improve the platform.
-  </p>
-</div>
-
-<!-- TERMS -->
-<div class="card">
-  <h3>Terms of Use</h3>
-  <p class="small">
-    This website provides educational content only.
-    Users must follow all platform rules when creating content.
-  </p>
-</div>
-
-<div class="footer">
-  © 2026 Creator Growth Hub • All Rights Reserved
-</div>
-
-</div>
+<footer>
+  © 2026 • TERRY MUSIMBI • Blue • White • Black
+</footer>
 
 <script>
-const content = {
-  TikTok:{
-    ideas:[
-      "POV story with text",
-      "Before vs after clip",
-      "React to a comment",
-      "Day in my life",
-      "Teach one quick tip"
-    ],
-    videos:[
-      "https://www.youtube.com/embed/9bZkp7q19f0",
-      "https://www.youtube.com/embed/JGwWNGJdvx8"
-    ]
-  },
-  YouTube:{
-    ideas:[
-      "I tried this for 7 days",
-      "Beginner mistakes",
-      "How I would start today",
-      "Explaining a trend",
-      "Reacting to comments"
-    ],
-    videos:[
-      "https://www.youtube.com/embed/l482T0yNkeo",
-      "https://www.youtube.com/embed/dQw4w9WgXcQ"
-    ]
-  },
-  Instagram:{
-    ideas:[
-      "Aesthetic reel",
-      "Relatable text reel",
-      "Mini vlog",
-      "Behind the scenes",
-      "Quick tip post"
-    ],
-    videos:[
-      "https://www.youtube.com/embed/OPf0YbXqDm0",
-      "https://www.youtube.com/embed/8KXK8X6wzO8"
-    ]
-  }
-};
-
-function loadAll(){
-  const p=document.getElementById("platform").value;
-  const ideas=document.getElementById("ideas");
-  const videos=document.getElementById("videos");
-  ideas.innerHTML="";
-  videos.innerHTML="";
-  content[p].ideas.forEach(i=>{
-    let li=document.createElement("li");
-    li.textContent=i;
-    ideas.appendChild(li);
-  });
-  content[p].videos.forEach(v=>{
-    let f=document.createElement("iframe");
-    f.src=v;
-    f.allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture";
-    f.allowFullscreen=true;
-    videos.appendChild(f);
-  });
+/* Dark / Light */
+function toggleMode(){
+  document.body.classList.toggle("light");
 }
-loadAll();
+
+/* Visitor Counter (demo) */
+let visits = localStorage.getItem("visits") || 0;
+visits++;
+localStorage.setItem("visits", visits);
+document.getElementById("visits").innerText = visits;
+
+/* AI Idea Generator */
+const ideas = [
+  "Start with: Nobody tells you this about…",
+  "Before vs After transformation",
+  "3 mistakes beginners make",
+  "One tool that changed everything",
+  "Do this for 7 days and see results",
+  "The fastest way to grow in 2026"
+];
+function generateIdea(){
+  document.getElementById("idea").innerText =
+    ideas[Math.floor(Math.random()*ideas.length)];
+}
 </script>
 
 </body>
