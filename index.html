@@ -5,11 +5,6 @@
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 <title>IdeaSpark</title>
 
-<!-- GOOGLE ADS PLACEHOLDER (activate after AdSense approval) -->
-<!--
-<script async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js"></script>
--->
-
 <style>
 body {
   margin: 0;
@@ -18,76 +13,41 @@ body {
   color: white;
   text-align: center;
 }
-
 header {
   background: #1447ff;
   padding: 30px 15px;
 }
-
-header h1 {
-  margin: 0;
-  font-size: 32px;
-}
-
-header p {
-  margin-top: 8px;
-  font-size: 14px;
-  opacity: 0.9;
-}
-
-.container {
-  padding: 20px;
-}
-
+.container { padding: 20px; }
 .card {
   background: #0b1636;
   border-radius: 16px;
   padding: 20px;
   margin-bottom: 20px;
-  box-shadow: 0 0 20px rgba(0,0,0,0.4);
 }
-
-.buttons button {
+button {
   background: #1447ff;
   color: white;
   border: none;
   padding: 12px 16px;
   border-radius: 12px;
   margin: 6px;
-  font-size: 14px;
   cursor: pointer;
 }
-
 .idea {
   font-size: 18px;
-  margin: 25px 0;
+  margin: 20px 0;
   min-height: 40px;
 }
-
-.next-btn {
-  background: #1447ff;
-  border: none;
-  padding: 14px 30px;
-  border-radius: 14px;
-  font-size: 16px;
-  color: white;
-  cursor: pointer;
-}
-
-/* AD BOX */
-.ad-box {
+.affiliate {
   background: #020617;
   border: 2px dashed #1447ff;
-  border-radius: 14px;
-  padding: 20px;
-  margin: 20px 0;
-  font-size: 14px;
-  opacity: 0.85;
+  padding: 15px;
+  border-radius: 12px;
 }
-
-footer {
-  font-size: 12px;
-  opacity: 0.6;
+a {
+  color: #4ea1ff;
+  text-decoration: none;
+  font-weight: bold;
 }
 </style>
 </head>
@@ -96,131 +56,73 @@ footer {
 
 <header>
   <h1>IdeaSpark ✨</h1>
-  <p>Instant Content Ideas for Creators</p>
+  <p>100+ Ideas Per Category • Earn via Affiliate Links</p>
 </header>
 
 <div class="container">
 
-  <!-- AD TOP -->
-  <div class="ad-box">
-    🔵 Ad Space (Google AdSense)
-  </div>
+<div class="card">
+  <button onclick="selectCat('Dance')">Dance</button>
+  <button onclick="selectCat('Comedy')">Comedy</button>
+  <button onclick="selectCat('Quotes')">Quotes</button>
+  <button onclick="selectCat('School')">School Life</button>
+  <button onclick="selectCat('Motivation')">Motivation</button>
 
-  <!-- IDEAS -->
-  <div class="card">
-    <div class="buttons">
-      <button onclick="selectCategory('Dance')">Dance</button>
-      <button onclick="selectCategory('Comedy')">Comedy</button>
-      <button onclick="selectCategory('Quotes')">Quotes</button>
-      <button onclick="selectCategory('School')">School Life</button>
-      <button onclick="selectCategory('Motivation')">Motivation</button>
-    </div>
+  <div class="idea" id="ideaText">Choose a category</div>
+  <button onclick="nextIdea()">Next Idea</button>
+</div>
 
-    <div class="idea" id="ideaText">
-      Click a category to get ideas
-    </div>
-
-    <button class="next-btn" onclick="nextIdea()">Next Idea</button>
-  </div>
-
-  <!-- AD MIDDLE -->
-  <div class="ad-box">
-    🔵 Ad Space (Banner / Video)
-  </div>
-
-  <!-- EARNINGS -->
-  <div class="card">
-    <h3>💰 How This Site Earns</h3>
-    <p>
-      • Ads show when visitors use the site<br>
-      • You earn per view & click<br>
-      • More traffic = more money<br>
-      • TikTok traffic works best
-    </p>
-  </div>
-
-  <!-- AFFILIATE -->
-  <div class="card">
-    <h3>🤝 Affiliate Income</h3>
-    <p>
-      • Promote editing apps & tools<br>
-      • Earn commission per click<br>
-      • Links will be added later
-    </p>
-  </div>
-
-  <!-- AD BOTTOM -->
-  <div class="ad-box">
-    🔵 Ad Space (Footer)
-  </div>
-
-  <footer>
-    © 2026 IdeaSpark
-  </footer>
+<div class="card affiliate">
+  <h3>💰 Earn With This Tool</h3>
+  <p>Creators use this tool to make viral content.</p>
+  <a href="https://YOUR-AFFILIATE-LINK-HERE" target="_blank"
+     onclick="countClick()">👉 Use Recommended Creator Tool</a>
+  <p id="clicks">Affiliate clicks: 0</p>
+</div>
 
 </div>
 
 <script>
+let clicks = 0;
+function countClick() {
+  clicks++;
+  document.getElementById("clicks").innerText =
+    "Affiliate clicks: " + clicks;
+}
+
+/* 100 IDEAS PER CATEGORY (generated pattern) */
+function generateIdeas(prefix) {
+  let arr = [];
+  for (let i = 1; i <= 100; i++) {
+    arr.push(prefix + " idea " + i);
+  }
+  return arr;
+}
+
 const ideas = {
-  Dance: [
-    "Slow intro then beat drop",
-    "School uniform transition dance",
-    "Afrobeats freestyle",
-    "Mirror dance trend",
-    "Dance in 3 locations",
-    "Teach one move in 10 seconds",
-    "Dance challenge with friend",
-    "Copy viral dance + your ending"
-  ],
-  Comedy: [
-    "Teacher vs student skit",
-    "When exams are near",
-    "African parent reactions",
-    "Phone at 1% battery",
-    "WiFi suddenly disconnects",
-    "Expectation vs reality"
-  ],
-  Quotes: [
-    "Consistency beats talent",
-    "Your time is coming",
-    "Small progress matters",
-    "Start before you're ready",
-    "Dream big, act now"
-  ],
-  School: [
-    "Morning assembly mood",
-    "Dorm life struggles",
-    "Group work problems",
-    "Exam week vibes",
-    "Best friend moments"
-  ],
-  Motivation: [
-    "Nobody believed in me",
-    "Hard work season",
-    "Why I won't give up",
-    "From zero to something",
-    "Dreams are valid"
-  ]
+  Dance: generateIdeas("Dance"),
+  Comedy: generateIdeas("Comedy"),
+  Quotes: generateIdeas("Quote"),
+  School: generateIdeas("School life"),
+  Motivation: generateIdeas("Motivation")
 };
 
-let currentCategory = "";
+let cat = "";
 let index = 0;
 
-function selectCategory(cat) {
-  currentCategory = cat;
+function selectCat(c) {
+  cat = c;
   index = 0;
-  document.getElementById("ideaText").innerText =
-    ideas[cat][index];
+  document.getElementById("ideaText").innerText = ideas[c][0];
 }
 
 function nextIdea() {
-  if (!currentCategory) return;
+  if (!cat) return;
   index++;
-  if (index >= ideas[currentCategory].length) index = 0;
-  document.getElementById("ideaText").innerText =
-    ideas[currentCategory][index];
+  if (index >= ideas[cat].length) index = 0;
+  document.getElementById("ideaText").innerText = ideas[cat][index];
 }
 </script>
 
 </body>
-  </html>
+</html>
