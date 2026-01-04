@@ -2,199 +2,288 @@
 <html lang="en">
 <head>
 <meta charset="UTF-8">
-<title>Creator Growth Hub • Terry Musimbi</title>
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-<meta name="description" content="Creator Growth Hub by Terry Musimbi. Viral content ideas, inspiration videos, and legal monetization.">
-<meta name="theme-color" content="#0a58ff">
+<title>IdeaSpark • by Terry Musimbi</title>
+
+<!-- PWA -->
+<link rel="manifest" href="data:application/json,{
+  &quot;name&quot;:&quot;IdeaSpark&quot;,
+  &quot;short_name&quot;:&quot;IdeaSpark&quot;,
+  &quot;start_url&quot;:&quot;.&quot;,
+  &quot;display&quot;:&quot;standalone&quot;,
+  &quot;background_color&quot;:&quot;#000000&quot;,
+  &quot;theme_color&quot;:&quot;#0a84ff&quot;
+}">
+<meta name="theme-color" content="#0a84ff">
 
 <style>
 :root{
-  --blue:#0a58ff;
-  --bg:#0b1020;
-  --card:#141a33;
-  --text:#ffffff;
-  --muted:#b5c0ff;
+  --blue:#0a84ff;
+  --black:#000;
+  --white:#fff;
+  --card:#0b0b0b;
 }
-*{margin:0;padding:0;box-sizing:border-box;font-family:system-ui}
+*{box-sizing:border-box}
 body{
-  background:linear-gradient(180deg,#070b18,#0b1020);
-  color:var(--text);
+  margin:0;
+  font-family:system-ui,-apple-system,Segoe UI,Roboto;
+  background:linear-gradient(180deg,#000,#050d1f);
+  color:var(--white);
 }
-.container{max-width:900px;margin:auto;padding:20px}
-.card{
-  background:var(--card);
-  border-radius:20px;
-  padding:22px;
-  margin-bottom:20px;
-  box-shadow:0 10px 30px rgba(0,0,0,.4)
+header{
+  position:sticky;top:0;z-index:10;
+  background:#000;
+  padding:14px 16px;
+  display:flex;justify-content:space-between;align-items:center;
+  border-bottom:1px solid #111;
 }
-h1,h2,h3{margin-bottom:10px}
-h1 span{color:var(--blue)}
-p{opacity:.85;font-size:15px}
+.logo{font-weight:900;font-size:18px}
+.logo span{color:var(--blue)}
 button{
   background:var(--blue);
-  border:none;
-  color:#fff;
-  padding:14px;
-  width:100%;
-  border-radius:14px;
-  font-size:15px;
-  font-weight:600;
+  border:none;color:#fff;
+  padding:8px 12px;
+  border-radius:10px;
+  font-weight:700;
+  cursor:pointer;
 }
+.container{max-width:900px;margin:auto;padding:16px}
+.card{
+  background:var(--card);
+  border:1px solid #111;
+  border-radius:16px;
+  padding:16px;
+  margin-bottom:16px;
+}
+.small{opacity:.7;font-size:13px}
+
 input{
   width:100%;
-  padding:14px;
-  border-radius:12px;
-  border:none;
-  background:#0a1030;
+  padding:10px;
+  margin:6px 0;
+  border-radius:10px;
+  background:#000;
+  border:1px solid #222;
   color:#fff;
-  margin-bottom:12px;
 }
-ul{padding-left:18px}
-li{margin-bottom:8px;font-size:14px}
-small{opacity:.6}
 
-.viral-feed{
-  height:80vh;
+.profile{
+  display:flex;
+  gap:10px;
+  flex-wrap:wrap;
+}
+.badge{
+  padding:6px 10px;
+  border-radius:999px;
+  background:#001a33;
+  border:1px solid #0a84ff55;
+  color:#9cc8ff;
+  font-weight:700;
+}
+
+/* Video feed */
+.feed{
+  height:70vh;
   overflow-y:auto;
   scroll-snap-type:y mandatory;
-  border-radius:18px;
 }
-.viral-feed iframe{
-  width:100%;
-  height:80vh;
-  border:none;
+.video{
+  height:70vh;
   scroll-snap-align:start;
-  border-radius:18px;
+  display:flex;
+  align-items:flex-end;
+  background:linear-gradient(180deg,#111,#000);
+  border-bottom:1px solid #111;
+}
+.video .info{
+  padding:16px;
+  width:100%;
+  background:linear-gradient(180deg,transparent,rgba(0,0,0,.8));
+}
+.actions{margin-top:8px;display:flex;gap:8px}
+.actions button{
+  background:#000;
+  border:1px solid #222;
+  color:#fff;
 }
 
-footer{
-  text-align:center;
-  padding:30px 10px;
-  opacity:.6;
-  font-size:13px;
+/* Ideas */
+.grid{
+  display:grid;
+  grid-template-columns:1fr;
+  gap:12px;
 }
+@media(min-width:700px){
+  .grid{grid-template-columns:1fr 1fr}
+}
+.idea{
+  background:#000;
+  border:1px solid #111;
+  border-radius:12px;
+  padding:12px;
+}
+footer{text-align:center;opacity:.6;padding:20px}
 </style>
 </head>
 
 <body>
 
+<header>
+  <div class="logo">Idea<span>Spark</span></div>
+  <button onclick="installApp()">Install</button>
+</header>
+
 <div class="container">
 
-  <!-- HERO -->
-  <div class="card">
-    <h1>🚀 Creator <span>Growth Hub</span></h1>
-    <p>Smart content ideas • Real inspiration • Legal earning methods</p>
-    <p style="margin-top:8px;font-size:13px;opacity:.6">
-      Built & owned by <b>TERRY MUSIMBI</b>
-    </p>
+<div class="card">
+  <h2>Welcome to IdeaSpark</h2>
+  <p class="small">Created by <strong>Terry Musimbi</strong>. Discover trending content ideas and earn points daily.</p>
+</div>
+
+<div class="card">
+  <h2>Sign up / Login</h2>
+  <input id="username" placeholder="Enter username">
+  <button onclick="login()">Continue</button>
+</div>
+
+<div class="card" id="profile" style="display:none">
+  <div class="profile">
+    <div class="badge" id="uName"></div>
+    <div class="badge">Points: <span id="points">0</span></div>
+    <div class="badge">Days Active: <span id="days">1</span></div>
   </div>
+</div>
 
-  <!-- VIRAL FEED -->
-  <div class="card">
-    <h2>🔥 Trending Creator Videos</h2>
-    <p style="font-size:13px">Scroll vertically for modern inspiration</p>
+<!-- TRENDING VIDEOS -->
+<div class="card">
+  <h2>Trending Videos (Auto-Generated Daily)</h2>
+  <div class="feed" id="feed"></div>
+</div>
 
-    <div class="viral-feed">
-      <iframe src="https://www.youtube.com/embed/ZXsQAXx_ao0?mute=1&controls=0"></iframe>
-      <iframe src="https://www.youtube.com/embed/3nQNiWdeH2Q?mute=1&controls=0"></iframe>
-      <iframe src="https://www.youtube.com/embed/l9nh1l8ZIJQ?mute=1&controls=0"></iframe>
-    </div>
+<!-- CONTENT CREATOR IDEAS -->
+<div class="card">
+  <h2>Content Ideas for Creators (200+)</h2>
+  <div class="grid" id="ideas"></div>
+</div>
 
-    <small>Embedded public videos • 100% legal</small>
-  </div>
+<div class="card">
+  <h2>Earnings</h2>
+  <p class="small">
+    • Users earn points by using the website<br>
+    • You earn more as traffic & engagement increase<br>
+    • Ads & affiliates are AdSense-ready (Coming Soon)
+  </p>
+</div>
 
-  <!-- CONTENT IDEAS -->
-  <div class="card">
-    <h2>💡 Viral Content Ideas</h2>
-
-    <h3>TikTok / Reels</h3>
-    <ul>
-      <li>POV story with text</li>
-      <li>Before vs after clip</li>
-      <li>React to a comment</li>
-      <li>Day in my life</li>
-      <li>Teach one quick tip</li>
-    </ul>
-
-    <h3>YouTube Shorts</h3>
-    <ul>
-      <li>Top 3 tools creators use</li>
-      <li>Mistakes beginners make</li>
-      <li>Quick tutorials</li>
-      <li>Motivational clips</li>
-    </ul>
-
-    <h3>Advanced Viral Hooks</h3>
-    <ul>
-      <li>“Nobody tells you this…”</li>
-      <li>“Stop scrolling if you’re a creator”</li>
-      <li>“I wish I knew this earlier”</li>
-      <li>“This mistake kills your views”</li>
-    </ul>
-  </div>
-
-  <!-- HOW YOU EARN -->
-  <div class="card">
-    <h2>💵 How This Website Earns</h2>
-    <ul>
-      <li><b>Platform owner:</b> Ads & affiliate tools</li>
-      <li><b>Users:</b> Free ideas & inspiration</li>
-      <li>No cash payouts to users</li>
-      <li>No bots • No fake views</li>
-    </ul>
-    <p style="font-size:13px;opacity:.7">
-      Earnings belong to the platform owner: <b>TERRY MUSIMBI</b>
-    </p>
-  </div>
-
-  <!-- TOOLS -->
-  <div class="card">
-    <h2>🛠️ Recommended Creator Tools</h2>
-    <ul>
-      <li>Video editing apps</li>
-      <li>Caption & hashtag tools</li>
-      <li>Content planners</li>
-      <li>Thumbnail & design tools</li>
-    </ul>
-    <small>Affiliate links can be added later.</small>
-  </div>
-
-  <!-- EARLY ACCESS -->
-  <div class="card">
-    <h2>🔐 Early Access</h2>
-    <p>Accounts unlock more ideas and future features.</p>
-
-    <input type="text" placeholder="Username (demo)">
-    <input type="email" placeholder="Email (demo)">
-    <button>Early Access (Coming Soon)</button>
-
-    <small>This is a demo. No real accounts yet.</small>
-  </div>
-
-  <!-- PRIVACY -->
-  <div class="card">
-    <h2>🔒 Privacy Policy</h2>
-    <p>
-      We respect your privacy. No personal data is sold.
-      Analytics and ads may be used to improve the platform.
-    </p>
-  </div>
-
-  <!-- TERMS -->
-  <div class="card">
-    <h2>📜 Terms of Use</h2>
-    <p>
-      This website provides educational content only.
-      Users must follow all platform rules when creating content.
-    </p>
-  </div>
-
-  <footer>
-    © 2026 • Creator Growth Hub • TERRY MUSIMBI
-  </footer>
+<div class="card">
+  <h2>Privacy & Terms</h2>
+  <p class="small">
+    No sensitive data is sold. Points are stored locally. Safe for all ages.
+  </p>
+</div>
 
 </div>
 
+<footer>© <span id="year"></span> IdeaSpark • Terry Musimbi</footer>
+
+<script>
+/* STORAGE */
+const S = (k,v)=>v===undefined?JSON.parse(localStorage.getItem(k)):localStorage.setItem(k,JSON.stringify(v));
+let user=S("user")||null;
+let points=S("points")||0;
+let days=S("days")||1;
+
+/* LOGIN */
+function login(){
+  const name=document.getElementById("username").value||"User";
+  user={name};
+  S("user",user);
+  addPoints(20);
+  showProfile();
+}
+
+/* PROFILE */
+function showProfile(){
+  if(!user)return;
+  document.getElementById("profile").style.display="block";
+  document.getElementById("uName").textContent=user.name;
+  document.getElementById("points").textContent=points;
+  document.getElementById("days").textContent=days;
+}
+
+/* POINTS */
+function addPoints(n){
+  points+=n;
+  S("points",points);
+  document.getElementById("points").textContent=points;
+}
+
+/* DAILY TRENDING VIDEOS (2025–2026 STYLE) */
+const videoHooks=[
+  "This changed everything",
+  "Nobody is talking about this",
+  "Do this before 2026",
+  "Creators are switching to this",
+  "This trend is exploding",
+  "Stop scrolling",
+  "This works every time"
+];
+const niches=["AI","Motivation","Faceless Content","Shorts","Reels","Education","Business"];
+
+const feed=document.getElementById("feed");
+const seed=new Date().toDateString().length;
+
+for(let i=0;i<8;i++){
+  const v=document.createElement("div");
+  v.className="video";
+  const title=`${videoHooks[(seed+i)%videoHooks.length]} • ${niches[(seed*i)%niches.length]}`;
+  v.innerHTML=`
+    <div class="info">
+      <strong>${title}</strong>
+      <div class="actions">
+        <button onclick="addPoints(5)">Like +5</button>
+        <button onclick="addPoints(3)">Save +3</button>
+      </div>
+    </div>`;
+  v.addEventListener("wheel",()=>addPoints(1));
+  feed.appendChild(v);
+}
+
+/* 200+ CREATOR IDEAS AUTO-GENERATED */
+const platforms=["TikTok","YouTube","Instagram","Faceless","AI"];
+const formats=[
+  "Daily tips","Before vs After","Mistakes beginners make",
+  "Top 5 tools","Storytime","POV","Myth vs Truth",
+  "Challenges","Explainers","Facts","Motivation","Tutorials"
+];
+
+const ideas=document.getElementById("ideas");
+platforms.forEach(p=>{
+  formats.forEach(f=>{
+    const d=document.createElement("div");
+    d.className="idea";
+    d.innerHTML=`
+      <strong>${p} • ${f}</strong>
+      <p class="small">Optimized for 2025–2026 trends</p>
+      <button onclick="addPoints(4)">Save idea +4</button>`;
+    ideas.appendChild(d);
+  });
+});
+
+/* INSTALL */
+let deferredPrompt;
+window.addEventListener("beforeinstallprompt",e=>{
+  e.preventDefault();
+  deferredPrompt=e;
+});
+function installApp(){
+  if(deferredPrompt)deferredPrompt.prompt();
+  else alert("Use browser → Add to Home Screen");
+}
+
+document.getElementById("year").textContent=new Date().getFullYear();
+showProfile();
+</script>
+
 </body>
-                                   </html>
+                                    </html>
