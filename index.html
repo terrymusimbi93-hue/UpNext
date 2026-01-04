@@ -3,67 +3,79 @@
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>IdeaSpark ✨</title>
+<title>IdeaSpark</title>
 
 <style>
 body {
   margin: 0;
   font-family: Arial, sans-serif;
-  background: linear-gradient(135deg, #040b2f, #0b2cff);
+  background: linear-gradient(180deg, #050b1f, #020617);
   color: white;
   text-align: center;
 }
 
 header {
-  background: #0b2cff;
-  padding: 28px 15px;
+  background: #1447ff;
+  padding: 30px 15px;
 }
 
-.container {
-  margin: 20px;
-  padding: 20px;
-  background: rgba(0,0,0,0.45);
-  border-radius: 18px;
+header h1 {
+  margin: 0;
+  font-size: 32px;
 }
 
-button {
-  background: #0b2cff;
-  color: white;
-  border: none;
-  padding: 14px 22px;
-  margin: 8px;
-  border-radius: 14px;
-  font-size: 16px;
-  cursor: pointer;
-}
-
-button:hover {
-  background: #091fb3;
-}
-
-.idea-box {
-  margin-top: 18px;
-  padding: 22px;
-  background: rgba(0,0,0,0.55);
-  border-radius: 14px;
-  font-size: 18px;
-}
-
-.ad-box {
-  margin-top: 20px;
-  padding: 15px;
-  background: rgba(255,255,255,0.08);
-  border-radius: 12px;
+header p {
+  margin-top: 8px;
   font-size: 14px;
   opacity: 0.9;
 }
 
-.earn-box {
-  margin-top: 20px;
-  padding: 18px;
-  background: rgba(0,0,0,0.6);
+.container {
+  padding: 20px;
+}
+
+.card {
+  background: #0b1636;
+  border-radius: 16px;
+  padding: 20px;
+  margin-bottom: 20px;
+  box-shadow: 0 0 20px rgba(0,0,0,0.4);
+}
+
+.buttons button {
+  background: #1447ff;
+  color: white;
+  border: none;
+  padding: 12px 16px;
+  border-radius: 12px;
+  margin: 6px;
+  font-size: 14px;
+  cursor: pointer;
+}
+
+.buttons button:hover {
+  opacity: 0.85;
+}
+
+.idea {
+  font-size: 18px;
+  margin: 25px 0;
+  min-height: 40px;
+}
+
+.next-btn {
+  background: #1447ff;
+  border: none;
+  padding: 14px 30px;
   border-radius: 14px;
-  font-size: 15px;
+  font-size: 16px;
+  color: white;
+  cursor: pointer;
+}
+
+footer {
+  font-size: 12px;
+  opacity: 0.6;
 }
 </style>
 </head>
@@ -77,101 +89,109 @@ button:hover {
 
 <div class="container">
 
-  <!-- CATEGORY BUTTONS -->
-  <button onclick="showIdea('dance')">Dance</button>
-  <button onclick="showIdea('comedy')">Comedy</button>
-  <button onclick="showIdea('quotes')">Quotes</button>
-  <button onclick="showIdea('school')">School Life</button>
-  <button onclick="showIdea('motivation')">Motivation</button>
+  <!-- IDEAS -->
+  <div class="card">
+    <div class="buttons">
+      <button onclick="selectCategory('Dance')">Dance</button>
+      <button onclick="selectCategory('Comedy')">Comedy</button>
+      <button onclick="selectCategory('Quotes')">Quotes</button>
+      <button onclick="selectCategory('School')">School Life</button>
+      <button onclick="selectCategory('Motivation')">Motivation</button>
+    </div>
 
-  <!-- IDEA DISPLAY -->
-  <div class="idea-box" id="idea">
-    Click a category to get ideas 👆
+    <div class="idea" id="ideaText">
+      Click a category to get ideas
+    </div>
+
+    <button class="next-btn" onclick="nextIdea()">Next Idea</button>
   </div>
 
-  <button onclick="nextIdea()">Next Idea</button>
-
-  <!-- AD PLACEHOLDER -->
-  <div class="ad-box">
-    🔔 Sponsored Ad  
-    <br>Ads will appear here (Google AdSense ready)
-  </div>
-
-  <!-- AFFILIATE / EARN -->
-  <div class="earn-box">
+  <!-- EARNINGS -->
+  <div class="card">
     <h3>💰 How You Earn</h3>
-    <p>• Ads shown on this website</p>
-    <p>• Affiliate clicks</p>
-    <p>• Sharing your referral link</p>
-
-    <button onclick="affiliateClick()">Visit Partner</button>
-
-    <p>👥 Referrals: <span id="refCount">0</span></p>
+    <p>
+      • Share this website on TikTok & bio<br>
+      • Add affiliate links later (editing apps, tools)<br>
+      • Enable ads when traffic grows<br>
+      • Offer premium ideas in the future
+    </p>
   </div>
+
+  <!-- AFFILIATE -->
+  <div class="card">
+    <h3>🤝 Affiliate Opportunity</h3>
+    <p>
+      Creators can promote tools they use.<br>
+      You earn commission when users click links.
+    </p>
+    <p><i>(Affiliate links will be added later)</i></p>
+  </div>
+
+  <footer>
+    © 2026 IdeaSpark
+  </footer>
 
 </div>
 
 <script>
-/* IDEAS DATA */
 const ideas = {
-  dance: [
-    "Dance using only your hands",
-    "Slow intro then beat drop dance",
-    "Dance to an old forgotten song",
-    "Mirror dance challenge"
+  Dance: [
+    "Slow intro then beat drop",
+    "School uniform transition dance",
+    "Afrobeats freestyle",
+    "Mirror dance trend",
+    "Dance in 3 locations",
+    "Teach one move in 10 seconds",
+    "Dance challenge with friend",
+    "Copy viral dance + your ending"
   ],
-  comedy: [
-    "POV: teacher says this is easy",
-    "When WiFi disappears at 1%",
-    "Group work but one person does everything"
+  Comedy: [
+    "Teacher vs student skit",
+    "When exams are near",
+    "African parent reactions",
+    "Phone at 1% battery",
+    "WiFi suddenly disconnects",
+    "Expectation vs reality"
   ],
-  quotes: [
-    "Work in silence, let success speak",
+  Quotes: [
     "Consistency beats talent",
-    "Small steps every day"
+    "Your time is coming",
+    "Small progress matters",
+    "Start before you're ready",
+    "Dream big, act now"
   ],
-  school: [
-    "Before exams vs after exams",
-    "Teachers catching students talking",
-    "When the bell rings early"
+  School: [
+    "Morning assembly mood",
+    "Dorm life struggles",
+    "Group work problems",
+    "Exam week vibes",
+    "Best friend moments"
   ],
-  motivation: [
-    "Discipline creates freedom",
-    "Start now, not tomorrow",
-    "Your dreams are valid"
+  Motivation: [
+    "Nobody believed in me",
+    "Hard work season",
+    "Why I won't give up",
+    "From zero to something",
+    "Dreams are valid"
   ]
 };
 
 let currentCategory = "";
 let index = 0;
 
-/* SHOW IDEAS */
-function showIdea(category) {
-  currentCategory = category;
+function selectCategory(cat) {
+  currentCategory = cat;
   index = 0;
-  document.getElementById("idea").innerText =
-    ideas[category][index];
+  document.getElementById("ideaText").innerText =
+    ideas[cat][index];
 }
 
 function nextIdea() {
   if (!currentCategory) return;
   index++;
   if (index >= ideas[currentCategory].length) index = 0;
-  document.getElementById("idea").innerText =
+  document.getElementById("ideaText").innerText =
     ideas[currentCategory][index];
-}
-
-/* AFFILIATE + REFERRAL SYSTEM */
-let referrals = localStorage.getItem("referrals") || 0;
-document.getElementById("refCount").innerText = referrals;
-
-function affiliateClick() {
-  referrals++;
-  localStorage.setItem("referrals", referrals);
-  document.getElementById("refCount").innerText = referrals;
-
-  // Replace later with real affiliate link
-  alert("Thanks for supporting IdeaSpark 💙");
 }
 </script>
 
