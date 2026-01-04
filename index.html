@@ -3,347 +3,251 @@
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>IdeaSpark – All In One Creator Hub</title>
+<title>Creator Growth Hub</title>
+
+<meta name="description" content="Content ideas, creator tools, and legal ways to earn from TikTok, YouTube, and Instagram.">
+<meta name="keywords" content="content ideas, creators, TikTok ideas, YouTube growth, Instagram reels">
+<meta name="author" content="Creator Growth Hub">
 
 <style>
-:root{
---bg:#050816;
---card:#0e1535;
---accent:#4da3ff;
---text:#eef3ff;
---muted:#9fb2d9;
-}
-*{box-sizing:border-box;font-family:system-ui}
-html{scroll-behavior:smooth}
 body{
-margin:0;
-background:linear-gradient(180deg,#020617,#050816);
-color:var(--text);
+  margin:0;
+  font-family: Arial, sans-serif;
+  background:linear-gradient(135deg,#020617,#020d2d);
+  color:white;
 }
-
-/* Loader */
-#loader{
-position:fixed;inset:0;
-background:#050816;
-display:flex;
-align-items:center;
-justify-content:center;
-z-index:9999;
-}
-#loader span{
-width:14px;height:14px;
-background:var(--accent);
-border-radius:50%;
-margin:6px;
-animation:jump 1s infinite alternate;
-}
-#loader span:nth-child(2){animation-delay:.2s}
-#loader span:nth-child(3){animation-delay:.4s}
-@keyframes jump{to{transform:translateY(-16px)}}
-
-/* Hero */
-.hero{
-padding:90px 20px;
-text-align:center;
-}
-.hero h1{
-font-size:56px;
-color:var(--accent);
-}
-.hero p{
-max-width:760px;
-margin:18px auto;
-font-size:18px;
-color:var(--muted);
-}
-.hero button{
-margin-top:30px;
-padding:16px 38px;
-border:none;
-border-radius:40px;
-background:var(--accent);
-font-weight:bold;
-cursor:pointer;
-}
-
-/* Nav */
-nav{
-display:flex;
-justify-content:center;
-gap:12px;
-flex-wrap:wrap;
-margin-top:40px;
-}
-nav a{
-padding:12px 22px;
-background:#0c1433;
-border-radius:30px;
-border:1px solid #22336b;
-text-decoration:none;
-color:white;
-}
-
-/* Sections */
-section{
-max-width:1200px;
-margin:90px auto;
-padding:0 20px;
+.container{
+  max-width:440px;
+  margin:auto;
+  padding:16px;
 }
 .card{
-background:linear-gradient(145deg,#101a3b,#0b122c);
-padding:40px;
-border-radius:30px;
-margin-bottom:50px;
-animation:fade .6s ease;
+  background:rgba(255,255,255,0.06);
+  border-radius:20px;
+  padding:20px;
+  margin-bottom:18px;
+  box-shadow:0 15px 35px rgba(0,0,0,0.45);
 }
-@keyframes fade{
-from{opacity:0;transform:translateY(30px)}
-to{opacity:1;transform:translateY(0)}
+h1,h2,h3{
+  margin-top:0;
 }
-
-h2{margin-top:0}
-
-/* Inputs */
-input,select{
-width:100%;
-padding:15px;
-margin-top:14px;
-border-radius:18px;
-border:none;
-background:#0c1433;
-color:white;
+select,input,button{
+  width:100%;
+  padding:12px;
+  margin-top:10px;
+  border-radius:12px;
+  border:none;
+  font-size:15px;
 }
-
-/* Ideas */
-.idea{
-margin-top:12px;
-padding:14px;
-background:#0c1433;
-border-radius:14px;
+select,input{
+  background:#020617;
+  color:white;
 }
-
-/* Video cards */
-.video{
-background:#0c1433;
-padding:22px;
-border-radius:22px;
-margin-top:22px;
+button{
+  background:#2563eb;
+  color:white;
+  font-weight:bold;
+  cursor:pointer;
 }
-.video img{
-width:100%;
-border-radius:18px;
+button:hover{
+  background:#1d4ed8;
 }
-.video a{
-display:inline-block;
-margin-top:12px;
-padding:10px 24px;
-background:var(--accent);
-color:black;
-font-weight:bold;
-border-radius:25px;
-text-decoration:none;
+ul{
+  padding-left:18px;
 }
-
-/* Button */
-.btn{
-width:100%;
-margin-top:18px;
-padding:16px;
-border:none;
-border-radius:40px;
-background:var(--accent);
-font-weight:bold;
-cursor:pointer;
+li{
+  margin-bottom:8px;
 }
-
-/* Stats */
-.stats{
-display:grid;
-grid-template-columns:repeat(auto-fit,minmax(200px,1fr));
-gap:20px;
+iframe{
+  width:100%;
+  height:200px;
+  border-radius:12px;
+  margin-top:10px;
 }
-.stat{
-background:#0c1433;
-padding:26px;
-border-radius:24px;
-text-align:center;
+.small{
+  font-size:13px;
+  opacity:0.8;
 }
-
-/* Footer */
-footer{
-text-align:center;
-padding:60px 20px;
-color:var(--muted);
-font-size:14px;
+.footer{
+  text-align:center;
+  font-size:12px;
+  opacity:0.6;
+  margin:20px 0;
+}
+.badge{
+  display:inline-block;
+  background:#0f172a;
+  padding:6px 10px;
+  border-radius:10px;
+  font-size:12px;
+  margin-bottom:8px;
 }
 </style>
 </head>
 
 <body>
 
-<div id="loader"><span></span><span></span><span></span></div>
+<div class="container">
 
-<div class="hero">
-<h1>IdeaSpark</h1>
-<p>
-The complete creator platform with viral ideas, trending videos,
-and real earning paths — all in one place.
-</p>
-<button onclick="go('ideas')">Start Creating 🚀</button>
-
-<nav>
-<a href="#ideas">Ideas</a>
-<a href="#trends">Trends</a>
-<a href="#earn">Earnings</a>
-<a href="#tools">Tools</a>
-<a href="#login">Login</a>
-</nav>
-</div>
-
-<section>
+<!-- HERO -->
 <div class="card">
-<h2>✨ Why IdeaSpark</h2>
-<ul>
-<li>Built for TikTok, YouTube & Instagram</li>
-<li>Simple viral content ideas</li>
-<li>No fake income claims</li>
-<li>Mobile-first & fast</li>
-<li>Clear earning explanation</li>
-</ul>
+  <span class="badge">Creator Platform</span>
+  <h1>🚀 Creator Growth Hub</h1>
+  <p class="small">
+    Smart content ideas • Real inspiration • Legal earning methods
+  </p>
 </div>
-</section>
 
-<section id="ideas">
+<!-- PLATFORM -->
 <div class="card">
-<h2>💡 Content Ideas</h2>
-<select onchange="loadIdeas(this.value)">
-<option value="tiktok">TikTok</option>
-<option value="youtube">YouTube</option>
-<option value="instagram">Instagram</option>
-</select>
-<div id="ideasBox"></div>
-<button class="btn" onclick="earn('premium')">🔒 Unlock Premium Ideas</button>
+  <h2>Select Platform</h2>
+  <select id="platform" onchange="loadAll()">
+    <option value="TikTok">TikTok</option>
+    <option value="YouTube">YouTube</option>
+    <option value="Instagram">Instagram</option>
+  </select>
 </div>
-</section>
 
-<section id="trends">
+<!-- IDEAS -->
 <div class="card">
-<h2>🔥 Trending Videos</h2>
-
-<h3>▶ YouTube</h3>
-<iframe width="100%" height="280"
-src="https://www.youtube.com/embed/dQw4w9WgXcQ"
-style="border:none;border-radius:22px"
-allowfullscreen></iframe>
-
-<h3>🎵 TikTok</h3>
-<div class="video">
-<img src="https://via.placeholder.com/900x500?text=TikTok+Trending">
-<a href="https://www.tiktok.com" target="_blank" onclick="earn('affiliate')">Open TikTok</a>
+  <h2>Content Ideas</h2>
+  <ul id="ideas"></ul>
+  <p class="small">Short, proven ideas that actually work.</p>
 </div>
 
-<h3>📸 Instagram</h3>
-<div class="video">
-<img src="https://via.placeholder.com/900x500?text=Instagram+Reels">
-<a href="https://www.instagram.com" target="_blank" onclick="earn('affiliate')">Open Instagram</a>
-</div>
-</div>
-</section>
-
-<section id="earn">
+<!-- VIDEOS -->
 <div class="card">
-<h2>💰 Earnings</h2>
-<div class="stats">
-<div class="stat">Total<br>$<span id="money">0.00</span></div>
-<div class="stat">Affiliate Clicks<br><span id="clicks">0</span></div>
-<div class="stat">Premium Unlocks<br><span id="premium">0</span></div>
+  <h2>Inspiration Videos</h2>
+  <div id="videos"></div>
+  <p class="small">Embedded public videos (100% legal).</p>
 </div>
-<p style="margin-top:20px;color:var(--muted)">
-Earnings come from affiliate tools and premium features.
-Guardian-linked accounts required for real payouts.
-</p>
-</div>
-</section>
 
-<section id="tools">
+<!-- EARN -->
 <div class="card">
-<h2>🧰 Creator Tools</h2>
-<div class="video">
-<strong>🎨 Canva</strong>
-<p>Design thumbnails & posts</p>
-<button class="btn" onclick="earn('affiliate')">Use Canva</button>
+  <h2>How You Earn From This Website</h2>
+  <ul>
+    <li><b>Affiliate links:</b> Recommend tools & apps</li>
+    <li><b>Display ads:</b> Google AdSense (after approval)</li>
+    <li><b>Premium access:</b> Lock advanced ideas</li>
+    <li><b>Brand interest:</b> Traffic attracts deals</li>
+  </ul>
+  <p class="small">
+    No bots • No fake views • Platform-safe methods only
+  </p>
 </div>
-<div class="video">
-<strong>🤖 AI Caption Tool</strong>
-<p>Generate hooks & captions</p>
-<button class="btn" onclick="earn('affiliate')">Try AI Tool</button>
-</div>
-<p style="color:var(--muted)">
-Affiliate links may earn commission at no extra cost.
-</p>
-</div>
-</section>
 
-<section id="login">
+<!-- AFFILIATE -->
 <div class="card">
-<h2>🔐 Login / Sign Up</h2>
-<input placeholder="Email">
-<input type="password" placeholder="Password">
-<button class="btn">Continue</button>
+  <h2>Recommended Creator Tools</h2>
+  <ul>
+    <li>Video editing apps</li>
+    <li>Caption & hashtag tools</li>
+    <li>Content planners</li>
+    <li>Thumbnail & design tools</li>
+  </ul>
+  <p class="small">
+    Affiliate links can be added later without changing design.
+  </p>
 </div>
-</section>
 
-<section>
+<!-- SIGN UP -->
 <div class="card">
-<h2>❓ FAQ</h2>
-<p><strong>Do videos work?</strong><br>YouTube plays inside. TikTok & Instagram open correctly.</p>
-<p><strong>Is it free?</strong><br>Yes. Premium is optional.</p>
-<p><strong>Can I earn?</strong><br>Yes, through affiliates and premium unlocks.</p>
+  <h2>Create Free Account</h2>
+  <input type="text" placeholder="Username">
+  <input type="email" placeholder="Email">
+  <button>Create Account</button>
+  <p class="small">
+    Accounts unlock more ideas and future features.
+  </p>
 </div>
-</section>
 
-<section>
+<!-- PRIVACY -->
 <div class="card">
-<h2>📜 Privacy & Cookies</h2>
-<p>
-We respect privacy. Cookies may be used for analytics.
-Affiliate links may generate commission.
-</p>
+  <h3>Privacy Policy</h3>
+  <p class="small">
+    We respect your privacy. No personal data is sold.
+    Analytics and ads may be used to improve the platform.
+  </p>
 </div>
-</section>
 
-<footer>
-© 2026 IdeaSpark • All Rights Reserved
-</footer>
+<!-- TERMS -->
+<div class="card">
+  <h3>Terms of Use</h3>
+  <p class="small">
+    This website provides educational content only.
+    Users must follow all platform rules when creating content.
+  </p>
+</div>
+
+<div class="footer">
+  © 2026 Creator Growth Hub • All Rights Reserved
+</div>
+
+</div>
 
 <script>
-let money=0, clicks=0, premium=0;
-
-const ideas={
-tiktok:["3-second hook","Before vs After","POV trend","Relatable moment","Quick tip","Story hook"],
-youtube:["How-to","Top 5 tips","React to trend","Beginner mistakes","Storytime","Challenge"],
-instagram:["Text hook reel","Aesthetic reel","Mini tutorial","Motivation","Before & after","Carousel tips"]
+const content = {
+  TikTok:{
+    ideas:[
+      "POV story with text",
+      "Before vs after clip",
+      "React to a comment",
+      "Day in my life",
+      "Teach one quick tip"
+    ],
+    videos:[
+      "https://www.youtube.com/embed/9bZkp7q19f0",
+      "https://www.youtube.com/embed/JGwWNGJdvx8"
+    ]
+  },
+  YouTube:{
+    ideas:[
+      "I tried this for 7 days",
+      "Beginner mistakes",
+      "How I would start today",
+      "Explaining a trend",
+      "Reacting to comments"
+    ],
+    videos:[
+      "https://www.youtube.com/embed/l482T0yNkeo",
+      "https://www.youtube.com/embed/dQw4w9WgXcQ"
+    ]
+  },
+  Instagram:{
+    ideas:[
+      "Aesthetic reel",
+      "Relatable text reel",
+      "Mini vlog",
+      "Behind the scenes",
+      "Quick tip post"
+    ],
+    videos:[
+      "https://www.youtube.com/embed/OPf0YbXqDm0",
+      "https://www.youtube.com/embed/8KXK8X6wzO8"
+    ]
+  }
 };
 
-function loadIdeas(p){
-const box=document.getElementById("ideasBox");
-box.innerHTML="";
-ideas[p].forEach(i=>box.innerHTML+=`<div class="idea">• ${i}</div>`);
+function loadAll(){
+  const p=document.getElementById("platform").value;
+  const ideas=document.getElementById("ideas");
+  const videos=document.getElementById("videos");
+  ideas.innerHTML="";
+  videos.innerHTML="";
+  content[p].ideas.forEach(i=>{
+    let li=document.createElement("li");
+    li.textContent=i;
+    ideas.appendChild(li);
+  });
+  content[p].videos.forEach(v=>{
+    let f=document.createElement("iframe");
+    f.src=v;
+    f.allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture";
+    f.allowFullscreen=true;
+    videos.appendChild(f);
+  });
 }
-loadIdeas("tiktok");
-
-function earn(type){
-if(type==="affiliate"){clicks++;money+=0.30;}
-if(type==="premium"){premium++;money+=1.50;}
-document.getElementById("money").innerText=money.toFixed(2);
-document.getElementById("clicks").innerText=clicks;
-document.getElementById("premium").innerText=premium;
-}
-
-function go(id){
-document.getElementById(id).scrollIntoView({behavior:"smooth"});
-}
-window.onload=()=>document.getElementById("loader").style.display="none";
+loadAll();
 </script>
 
 </body>
