@@ -3,221 +3,256 @@
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-
-<title>CreatorFusion – Content Ideas, Viral Videos & Growth</title>
-
-<meta name="description" content="CreatorFusion helps content creators grow using viral ideas, real TikTok, YouTube and Instagram videos, and a simple referral system.">
-<meta name="keywords" content="content ideas, TikTok growth, YouTube Shorts, Instagram Reels, creators platform">
-<meta name="author" content="Candy Wendy">
+<title>IdeaSpark Pro</title>
 
 <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;600;700&display=swap" rel="stylesheet">
 
 <style>
 :root{
   --blue:#2563eb;
-  --black:#020617;
-  --white:#ffffff;
-  --gray:#94a3b8;
+  --dark:#020617;
   --card:#0f172a;
+  --border:#1e293b;
+  --text:#f8fafc;
+  --muted:#94a3b8;
 }
 *{box-sizing:border-box;font-family:Poppins}
-body{margin:0;background:var(--black);color:var(--white)}
-section{max-width:1200px;margin:auto;padding:80px 20px}
-h1,h2,h3{margin-top:0}
+body{
+  margin:0;
+  background:linear-gradient(180deg,#020617,#020617);
+  color:var(--text);
+}
+
+/* HEADER */
+header{
+  text-align:center;
+  padding:60px 20px 30px;
+}
+header h1{color:#60a5fa;font-size:2.4em}
+header p{color:var(--muted)}
 
 /* NAV */
 nav{
-  position:fixed;top:0;width:100%;
-  padding:16px 40px;
   display:flex;
-  justify-content:space-between;
-  align-items:center;
-  background:rgba(2,6,23,.92);
-  backdrop-filter:blur(12px);
-  z-index:1000;
+  flex-wrap:wrap;
+  gap:10px;
+  justify-content:center;
+  padding-bottom:20px;
 }
-nav h1{color:#60a5fa}
 nav button{
-  background:var(--blue);
-  border:none;color:white;
+  background:transparent;
+  border:1px solid var(--border);
+  color:white;
   padding:10px 22px;
   border-radius:30px;
   cursor:pointer;
 }
+nav button:hover{background:var(--blue)}
 
-/* HERO */
-.hero{
-  min-height:100vh;
+/* SECTIONS */
+section{
+  max-width:1100px;
+  margin:auto;
+  padding:40px 20px;
+}
+.card{
+  background:linear-gradient(180deg,#0b1227,#020617);
+  border-radius:25px;
+  padding:25px;
+  box-shadow:0 20px 40px rgba(0,0,0,.5);
+  margin-bottom:30px;
+}
+
+/* FORM */
+select,input{
+  width:100%;
+  padding:14px;
+  background:#020617;
+  border:1px solid var(--border);
+  color:white;
+  border-radius:15px;
+  margin-top:10px;
+}
+button.primary{
+  width:100%;
+  padding:14px;
+  background:var(--blue);
+  border:none;
+  border-radius:30px;
+  color:white;
+  margin-top:15px;
+  cursor:pointer;
+}
+
+/* LIST */
+ul{padding-left:20px}
+ul li{margin:8px 0}
+
+/* VIDEO */
+iframe{
+  width:100%;
+  height:420px;
+  border:none;
+  border-radius:20px;
+  margin-top:15px;
+}
+
+/* LOCK */
+.locked{
+  filter:blur(6px);
+  position:relative;
+}
+.locked::after{
+  content:"🔒 Login to unlock";
+  position:absolute;
+  inset:0;
   display:flex;
   align-items:center;
   justify-content:center;
-  text-align:center;
-  padding:120px 20px;
-}
-.hero span{color:#60a5fa}
-.hero p{max-width:650px;margin:auto;color:var(--gray)}
-
-/* GRID & CARD */
-.grid{display:grid;grid-template-columns:repeat(auto-fit,minmax(300px,1fr));gap:30px}
-.card{
-  background:var(--card);
-  padding:25px;
-  border-radius:22px;
-  box-shadow:0 20px 40px rgba(0,0,0,.35);
-  transition:.4s;
-}
-.card:hover{transform:translateY(-10px)}
-
-/* IDEAS */
-.idea{background:#020617;padding:12px;border-radius:12px;margin-bottom:10px}
-.locked{filter:blur(6px);position:relative}
-.locked::after{
-  content:"🔒 Sign in to unlock";
-  position:absolute;inset:0;
-  display:flex;align-items:center;justify-content:center;font-weight:600
-}
-
-/* VIDEO */
-iframe{width:100%;height:420px;border:none;border-radius:16px}
-
-/* FORM */
-input{
-  width:100%;padding:12px;margin:10px 0;
-  border-radius:12px;border:none
-}
-.btn{
-  width:100%;padding:12px;border:none;
-  border-radius:30px;background:var(--blue);
-  color:white;cursor:pointer
+  font-weight:600;
 }
 
 /* FOOTER */
 footer{
-  background:#020617;
-  padding:50px 20px;
   text-align:center;
-  color:var(--gray)
+  padding:40px 20px;
+  color:var(--muted);
 }
-small{color:var(--gray)}
 </style>
 </head>
 
 <body>
 
+<header id="home">
+  <h1>IdeaSpark Pro</h1>
+  <p>Animated • App-Style • Premium Content Creator Platform</p>
+</header>
+
 <nav>
-  <h1>CreatorFusion</h1>
-  <button onclick="scrollToSection('auth')">Sign In</button>
+  <button onclick="go('ideas')">Ideas</button>
+  <button onclick="go('trends')">Trends</button>
+  <button onclick="go('affiliate')">Affiliate</button>
+  <button onclick="go('earnings')">Earnings</button>
+  <button onclick="go('login')">Login</button>
 </nav>
 
-<div class="hero">
-  <div>
-    <h2>The Ultimate <span>Creator Platform</span></h2>
-    <p>Content ideas, real viral videos, growth inspiration, and safe earning — all in one place.</p>
-  </div>
-</div>
-
-<!-- HOW IT WORKS -->
-<section>
-  <h3>🚀 How It Works</h3>
-  <div class="grid">
-    <div class="card">1️⃣ Watch real viral videos</div>
-    <div class="card">2️⃣ Use proven content ideas</div>
-    <div class="card">3️⃣ Share your referral link</div>
-  </div>
-</section>
-
 <!-- IDEAS -->
-<section>
-  <h3>💡 Content Ideas</h3>
-  <div class="grid">
-    <div class="card">
-      <h4>TikTok</h4>
-      <div class="idea">Things I learned before 18</div>
-      <div class="idea locked">100 viral hooks</div>
-    </div>
-    <div class="card">
-      <h4>YouTube</h4>
-      <div class="idea">Faceless Shorts ideas</div>
-      <div class="idea locked">Retention formulas</div>
-    </div>
-    <div class="card">
-      <h4>Instagram</h4>
-      <div class="idea">Story-based Reels</div>
-      <div class="idea locked">Brand-attracting Reels</div>
-    </div>
-  </div>
-</section>
-
-<!-- VIDEOS -->
-<section>
-  <h3>🎥 Trending Videos</h3>
-  <div class="grid">
-    <div class="card"><iframe src="https://www.tiktok.com/embed/v2/7214120342261792005"></iframe></div>
-    <div class="card"><iframe src="https://www.youtube.com/embed/9bZkp7q19f0"></iframe></div>
-    <div class="card"><iframe src="https://www.instagram.com/reel/CvZrG7PocbY/embed"></iframe></div>
-  </div>
-</section>
-
-<!-- AUTH -->
-<section id="auth">
-  <h3>👤 Sign In / Sign Up</h3>
+<section id="ideas">
   <div class="card">
-    <input placeholder="Username">
+    <h2>💡 Content Ideas Generator</h2>
+    <select onchange="loadIdeas(this.value)">
+      <option value="TikTok">TikTok</option>
+      <option value="YouTube">YouTube</option>
+      <option value="Instagram">Instagram</option>
+    </select>
+    <ul id="ideaList"></ul>
+  </div>
+</section>
+
+<!-- TRENDS -->
+<section id="trends">
+  <div class="card">
+    <h2>🔥 Trending Now</h2>
+    <select onchange="loadTrends(this.value)">
+      <option value="tiktok">TikTok</option>
+      <option value="youtube">YouTube</option>
+      <option value="instagram">Instagram</option>
+    </select>
+    <div id="trendVideos"></div>
+  </div>
+</section>
+
+<!-- LOGIN -->
+<section id="login">
+  <div class="card">
+    <h2>👤 Login / Sign Up</h2>
     <input placeholder="Email">
-    <button class="btn" onclick="login()">Continue</button>
+    <input placeholder="Password">
+    <button class="primary" onclick="alert('Backend ready for future setup')">
+      Continue
+    </button>
   </div>
 </section>
 
-<!-- EARN -->
-<section>
-  <h3>💰 How You Earn</h3>
+<!-- AFFILIATE -->
+<section id="affiliate">
   <div class="card">
-    <p>You earn by sharing your referral link. This is a demo system — no payments are processed.</p>
-    <input value="https://creatorfusion.com/?ref=YOU" readonly>
-    <p>Referrals: <span id="r">0</span> | Demo Earnings: $<span id="e">0</span></p>
+    <h2>🤝 Affiliate Program (How You Earn)</h2>
+    <p>
+      Share IdeaSpark Pro using your affiliate link.
+      When people join or upgrade using your link, you earn commissions.
+    </p>
+    <ul>
+      <li>✔ Earn per referral</li>
+      <li>✔ No fake promises</li>
+      <li>✔ Transparent & teen-safe</li>
+      <li>✔ Scales as your platform grows</li>
+    </ul>
   </div>
 </section>
 
-<!-- ABOUT -->
-<section>
-  <h3>ℹ️ About CreatorFusion</h3>
-  <p>CreatorFusion was built to help creators grow smarter using real examples and proven ideas.</p>
-</section>
-
-<!-- FAQ -->
-<section>
-  <h3>❓ FAQ</h3>
+<!-- EARNINGS -->
+<section id="earnings">
   <div class="card">
-    <p><b>Is this free?</b> Yes, with optional premium features later.</p>
-    <p><b>Is it safe for teens?</b> Yes.</p>
-    <p><b>Do you own the videos?</b> No, they belong to their platforms.</p>
+    <h2>💰 Earnings Dashboard</h2>
+    <ul>
+      <li>Total Referrals: 0</li>
+      <li>Estimated Earnings: $0.00</li>
+      <li>Status: Getting Started 🚀</li>
+    </ul>
+    <p style="color:var(--muted)">
+      (Real tracking added later with backend)
+    </p>
   </div>
 </section>
 
-<!-- LEGAL -->
+<!-- PRIVACY -->
 <section>
-  <h3>🔐 Privacy, Cookies & Terms</h3>
   <div class="card">
-    <p><b>Privacy:</b> No personal data is sold.</p>
-    <p><b>Cookies:</b> Used only for basic functionality.</p>
-    <p><b>Terms:</b> This platform is informational and educational.</p>
+    <h2>🔐 Privacy Policy</h2>
+    <p>
+      We respect user privacy. No personal data is sold or shared.
+      Embedded videos belong to TikTok, YouTube, and Instagram.
+      IdeaSpark Pro is suitable for teens and follows responsible online practices.
+    </p>
   </div>
 </section>
 
 <footer>
-  © 2026 CreatorFusion • Built by Candy Wendy  
-  <br><small>All embedded content belongs to TikTok, YouTube & Instagram.</small>
+  © 2026 IdeaSpark Pro • Built by Candy Wendy
 </footer>
 
 <script>
-let r=0,e=0;
-function login(){
-  r++;e++;
-  document.getElementById("r").innerText=r;
-  document.getElementById("e").innerText=e;
-  alert("Welcome to CreatorFusion 🚀");
+/* IDEAS */
+const ideas={
+  TikTok:Array.from({length:100},(_,i)=>`TikTok viral idea ${i+1}`),
+  YouTube:Array.from({length:100},(_,i)=>`YouTube content idea ${i+1}`),
+  Instagram:Array.from({length:100},(_,i)=>`Instagram reel idea ${i+1}`)
+};
+function loadIdeas(p){
+  ideaList.innerHTML=ideas[p].map(i=>`<li>${i}</li>`).join('');
 }
-function scrollToSection(id){
+loadIdeas("TikTok");
+
+/* TRENDS (SAFE AUTO ROTATION) */
+const trends={
+  tiktok:["7214120342261792005","7206650412467492101"],
+  youtube:["dQw4w9WgXcQ","9bZkp7q19f0"],
+  instagram:["CvZrG7PocbY","Ct6XyHjJQqF"]
+};
+function loadTrends(p){
+  let html="";
+  trends[p].sort(()=>0.5-Math.random()).forEach(id=>{
+    if(p==="tiktok") html+=`<iframe src="https://www.tiktok.com/embed/v2/${id}"></iframe>`;
+    if(p==="youtube") html+=`<iframe src="https://www.youtube.com/embed/${id}"></iframe>`;
+    if(p==="instagram") html+=`<iframe src="https://www.instagram.com/reel/${id}/embed"></iframe>`;
+  });
+  trendVideos.innerHTML=html;
+}
+loadTrends("tiktok");
+
+/* NAV */
+function go(id){
   document.getElementById(id).scrollIntoView({behavior:'smooth'});
 }
 </script>
