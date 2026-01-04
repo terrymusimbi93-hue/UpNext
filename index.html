@@ -3,39 +3,26 @@
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>IdeaSpark</title>
+<title>IdeaSpark ✨</title>
 
 <style>
 body{
   margin:0;
-  font-family: Arial, sans-serif;
+  font-family:Arial, sans-serif;
   background:#050b1a;
   color:white;
   text-align:center;
 }
-
 header{
   background:#0a3cff;
   padding:22px;
 }
-
-header h1{
-  margin:0;
-  font-size:28px;
-}
-
-header p{
-  margin-top:6px;
-  opacity:0.95;
-}
-
 .card{
   background:#0b1430;
   margin:16px;
   padding:22px;
   border-radius:14px;
 }
-
 button{
   padding:14px 20px;
   margin:6px;
@@ -47,30 +34,23 @@ button{
   font-weight:bold;
   cursor:pointer;
 }
-
-button:hover{
-  opacity:0.9;
-}
-
+button:hover{opacity:0.9;}
 #ideaBox{
   font-size:18px;
   min-height:70px;
 }
-
 input{
   padding:12px;
   width:85%;
   max-width:280px;
   border-radius:10px;
   border:none;
-  font-size:15px;
 }
-
-footer{
-  padding:18px;
+.lock{
+  opacity:0.7;
   font-size:14px;
-  opacity:0.8;
 }
+a{color:#4da6ff;}
 </style>
 </head>
 
@@ -78,7 +58,7 @@ footer{
 
 <header>
   <h1>IdeaSpark ✨</h1>
-  <p>Instant Content Ideas for Creators 👇</p>
+  <p>Instant Content Ideas for Creators</p>
 </header>
 
 <div class="card">
@@ -92,164 +72,73 @@ footer{
 <div class="card">
   <div id="ideaBox">Choose a category to get ideas</div><br>
   <button onclick="nextIdea()">Next Idea</button>
+  <p id="lockMsg" class="lock"></p>
+</div>
+
+<div class="card" id="signupCard">
+  <h3>🔓 Unlock More Ideas</h3>
+  <p>Sign up (FREE) to access many more ideas</p>
+  <input type="email" id="email" placeholder="Your email"><br><br>
+  <button onclick="unlockIdeas()">Unlock Ideas</button>
+  <p style="font-size:13px;opacity:0.7;">No passwords • Parent-managed • Free</p>
 </div>
 
 <div class="card">
-  <h3>Get More Ideas 🔥</h3>
-  <p>Sign up to receive exclusive ideas & updates</p>
-  <input type="email" placeholder="Your email"><br><br>
-  <button>Sign Up (FREE)</button>
-  <p style="font-size:13px;opacity:0.7;">No spam • No passwords • Free forever</p>
+  <h3>🔥 Recommended for Creators</h3>
+  <p>Tools we recommend (parent-approved)</p>
+  <a href="https://www.canva.com/" target="_blank">👉 Try Canva (Free)</a>
+  <p style="font-size:13px;opacity:0.6;">
+    Some links may earn a small commission.
+  </p>
 </div>
 
 <div class="card">
-  👀 Visitors: <span id="visits">0</span>
+  👀 Visitors:
+  <img src="https://hitwebcounter.com/counter/counter.php?page=ideaspark123&style=0006&nbdigits=5&type=page&initCount=0">
 </div>
-
-<footer>
-  © 2026 IdeaSpark • Built with ❤️
-</footer>
 
 <script>
-// Visitor Counter
-let visits = localStorage.getItem("ideaspark_visits") || 0;
-visits++;
-localStorage.setItem("ideaspark_visits", visits);
-document.getElementById("visits").innerText = visits;
-
-// Ideas
+let unlocked = localStorage.getItem("ideasUnlocked") === "yes";
 let currentIdeas = [];
-let currentIndex = 0;
+let index = 0;
 
-const ideas = {
-  dance: [
-    "Dance to a forgotten song",
-    "Slow intro then fast drop",
-    "Hand-only dance",
-    "School uniform dance",
-    "Dance with backpack",
-    "Mirror dance with friend",
-    "Repeat one move only",
-    "Freeze on beat",
-    "Funny walk then dance",
-    "Spin transition dance",
-    "Shoulder-only dance",
-    "Robot dance",
-    "Underwater slow dance",
-    "Late-for-school dance",
-    "Happy freestyle",
-    "Serious face funny dance",
-    "Jump-start dance",
-    "Footwork only",
-    "Beat drop reaction",
-    "Strong ending pose"
-  ],
-
-  comedy: [
-    "Teacher vs student skit",
-    "Parents when guests come",
-    "Phone dies at 1%",
-    "Slow WiFi reaction",
-    "Exam panic moment",
-    "Food finishes early",
-    "Morning alarm struggle",
-    "Fake confidence",
-    "Teacher says silence",
-    "Last-born problems",
-    "When mum calls you",
-    "Trying not to laugh",
-    "Borrowing money fails",
-    "Friends say ‘I’m coming’",
-    "Results expectations vs reality",
-    "Overthinking at night",
-    "Group work drama",
-    "Embarrassing moment",
-    "Plans get cancelled",
-    "Monday mood"
-  ],
-
-  quotes: [
-    "Small steps still matter",
-    "Consistency beats motivation",
-    "Start before ready",
-    "Dreams need action",
-    "Progress is progress",
-    "Your future needs you",
-    "Hard work pays",
-    "Discipline creates freedom",
-    "Focus beats talent",
-    "One day or day one",
-    "Growth takes time",
-    "Believe then work",
-    "Fear means growth",
-    "Stay hungry to learn",
-    "Trust the process",
-    "Effort matters",
-    "Failure teaches",
-    "Patience wins",
-    "Learn daily",
-    "Never stop trying"
-  ],
-
-  school: [
-    "Study with me video",
-    "Exam prep routine",
-    "Night revision vlog",
-    "School morning routine",
-    "Packing school bag",
-    "Homework motivation",
-    "Focus in class tips",
-    "Study break ideas",
-    "Exam week survival",
-    "Best revision time",
-    "Timetable tips",
-    "Note-taking methods",
-    "Avoid procrastination",
-    "Study music tips",
-    "Group study benefits",
-    "Exam stress tips",
-    "School goals",
-    "Balance school and fun",
-    "Revision checklist",
-    "Subject ranking"
-  ],
-
-  motivation: [
-    "Wake up and try again",
-    "Your effort counts",
-    "Don’t quit today",
-    "One step today",
-    "You are capable",
-    "Progress over perfection",
-    "Discipline builds success",
-    "Hard days count",
-    "Keep learning",
-    "Your story continues",
-    "Work quietly",
-    "Trust yourself",
-    "Push past fear",
-    "Stay consistent",
-    "Future you will thank you",
-    "Small wins matter",
-    "Don’t compare",
-    "Focus on growth",
-    "Believe in yourself",
-    "Start now"
-  ]
+const limited = {
+  dance:["Dance with one move","Freeze on beat","School uniform dance","Funny walk dance","Slow intro fast drop"],
+  comedy:["Teacher vs student","Phone at 1%","Exam panic","Slow WiFi","Monday mood"],
+  quotes:["Start now","Progress matters","Stay consistent","Believe in yourself","Never give up"],
+  school:["Study with me","Exam routine","Packing bag","Revision tips","School goals"],
+  motivation:["Try again","You can do it","Small wins","Keep going","Don’t quit"]
 };
 
-function selectCategory(category){
-  currentIdeas = ideas[category];
-  currentIndex = Math.floor(Math.random()*currentIdeas.length);
-  document.getElementById("ideaBox").innerText = currentIdeas[currentIndex];
+const full = {
+  dance:Array.from({length:100},(_,i)=>`Dance idea ${i+1}`),
+  comedy:Array.from({length:100},(_,i)=>`Comedy idea ${i+1}`),
+  quotes:Array.from({length:100},(_,i)=>`Quote idea ${i+1}`),
+  school:Array.from({length:100},(_,i)=>`School life idea ${i+1}`),
+  motivation:Array.from({length:100},(_,i)=>`Motivation idea ${i+1}`)
+};
+
+function selectCategory(cat){
+  currentIdeas = unlocked ? full[cat] : limited[cat];
+  index = 0;
+  document.getElementById("lockMsg").innerText =
+    unlocked ? "" : "🔒 Sign up to unlock many more ideas";
+  nextIdea();
 }
 
 function nextIdea(){
   if(currentIdeas.length===0) return;
-  currentIndex = (currentIndex + 1) % currentIdeas.length;
-  document.getElementById("ideaBox").innerText = currentIdeas[currentIndex];
+  document.getElementById("ideaBox").innerText = currentIdeas[index];
+  index = (index + 1) % currentIdeas.length;
+}
+
+function unlockIdeas(){
+  localStorage.setItem("ideasUnlocked","yes");
+  unlocked = true;
+  document.getElementById("signupCard").innerHTML =
+    "<h3>✅ Ideas Unlocked!</h3><p>You now have access to many ideas 🎉</p>";
 }
 </script>
 
 </body>
-</html>
+  </html>
