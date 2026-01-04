@@ -2,281 +2,345 @@
 <html lang="en">
 <head>
 <meta charset="UTF-8">
-<title>IdeaSpark | By Terry Musimbi</title>
+<title>IdeaSpark™ | Premium Ideas Platform</title>
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+<!-- SEO (safe) -->
+<meta name="description" content="IdeaSpark™ — Premium, safe educational ideas for creators of all ages. Login required.">
+<meta name="robots" content="index,follow">
+
+<!-- PWA (inline, simple) -->
+<link rel="manifest" href="data:application/manifest+json,{
+  &quot;name&quot;:&quot;IdeaSpark&quot;,
+  &quot;short_name&quot;:&quot;IdeaSpark&quot;,
+  &quot;start_url&quot;:&quot;./&quot;,
+  &quot;display&quot;:&quot;standalone&quot;,
+  &quot;background_color&quot;:&quot;#020617&quot;,
+  &quot;theme_color&quot;:&quot;#3b82f6&quot;
+}">
+<meta name="theme-color" content="#3b82f6">
 
 <style>
 :root{
-  --bg:#0b0f19;
-  --card:#111827;
-  --blue:#2563eb;
+  --bg:#020617;
+  --panel:#0b1220;
+  --card:#0f172a;
+  --blue:#3b82f6;
+  --glow:#2563eb;
   --white:#ffffff;
-  --muted:#9ca3af;
+  --muted:#94a3b8;
+  --success:#22c55e;
+  --danger:#ef4444;
 }
 *{box-sizing:border-box;font-family:Inter,system-ui}
-body{margin:0;background:var(--bg);color:var(--white)}
+body{
+  margin:0;
+  background:radial-gradient(circle at top,var(--panel),var(--bg));
+  color:var(--white);
+  min-height:100vh;
+}
 .hidden{display:none}
+a{color:var(--blue);text-decoration:none}
 
 header{
-  padding:20px;
-  display:flex;
-  justify-content:space-between;
-  align-items:center;
-  background:#020617;
+  padding:16px 20px;
+  display:flex;justify-content:space-between;align-items:center;
 }
-.logo{font-size:22px;font-weight:700;color:var(--blue)}
-button{
-  background:var(--blue);
-  border:none;
-  color:white;
-  padding:10px 16px;
-  border-radius:10px;
-  cursor:pointer;
-}
-button.secondary{
-  background:transparent;
-  border:1px solid var(--blue);
-}
+.logo{font-size:24px;font-weight:800;color:var(--blue)}
+.logo small{color:var(--white);font-weight:500;margin-left:6px}
 
-section{padding:30px}
-.card{
-  background:var(--card);
-  padding:20px;
-  border-radius:16px;
-  margin-bottom:20px;
-  animation:fade 0.6s ease;
+button{
+  background:linear-gradient(135deg,var(--blue),var(--glow));
+  border:none;color:white;padding:12px 18px;border-radius:14px;
+  cursor:pointer;font-weight:700;
 }
-@keyframes fade{from{opacity:0;transform:translateY(10px)}to{opacity:1}}
+button.outline{background:transparent;border:1px solid var(--blue)}
+button.ghost{background:#020617;border:1px dashed #1f2937}
+
+section{padding:22px}
+.card{
+  background:linear-gradient(180deg,var(--card),#020617);
+  padding:22px;border-radius:22px;margin-bottom:22px;
+  box-shadow:0 12px 32px rgba(0,0,0,.45);
+  animation:fadeUp .6s ease;
+}
+@keyframes fadeUp{from{opacity:0;transform:translateY(18px)}to{opacity:1}}
 
 input,select{
-  width:100%;
-  padding:12px;
-  border-radius:10px;
-  border:none;
-  margin-top:10px;
+  width:100%;padding:14px;border-radius:14px;border:none;
+  background:#020617;color:white;margin-top:12px
 }
+.badge{
+  display:inline-block;padding:6px 12px;border-radius:999px;
+  background:#020617;color:var(--muted);font-size:12px
+}
+.grid{display:grid;grid-template-columns:1fr;gap:14px}
 
 .idea{
-  background:#020617;
-  padding:14px;
-  border-radius:12px;
-  margin-top:10px;
+  background:#020617;padding:14px;border-radius:14px;position:relative
+}
+.idea.locked{filter:blur(5px)}
+.idea.locked::after{
+  content:"🔒 Premium";position:absolute;inset:0;
+  display:flex;align-items:center;justify-content:center;font-weight:800
 }
 
-.locked{
-  filter:blur(4px);
-  pointer-events:none;
-}
-
-footer{
-  padding:20px;
-  text-align:center;
-  font-size:13px;
-  color:var(--muted);
-}
-a{color:var(--blue);text-decoration:none}
+footer{padding:22px;text-align:center;color:var(--muted);font-size:13px}
+.notice{font-size:13px;color:var(--muted)}
+.success{color:var(--success)}
+.danger{color:var(--danger)}
 </style>
 </head>
 
 <body>
 
 <header>
-  <div class="logo">IdeaSpark</div>
-  <div id="nav-auth">
-    <button onclick="showAuth()">Login / Sign Up</button>
-  </div>
-  <div id="nav-user" class="hidden">
-    <span id="userName"></span>
-    <button class="secondary" onclick="logout()">Logout</button>
+  <div class="logo">IdeaSpark™ <small>Owner: TERRY MUSIMBI</small></div>
+  <div id="navAuth"><button onclick="showAuth()">Login / Sign Up</button></div>
+  <div id="navUser" class="hidden">
+    <span id="navName"></span>
+    <button class="outline" onclick="logout()">Logout</button>
   </div>
 </header>
 
 <!-- LANDING -->
 <section id="landing">
   <div class="card">
-    <h1>Ideas that Spark Growth ⚡</h1>
-    <p>Unlock powerful content ideas for creators of all ages.</p>
-    <p><strong>Login required to access ideas.</strong></p>
-    <button onclick="showAuth()">Get Started</button>
+    <span class="badge">Premium • Safe • Educational</span>
+    <h1>Unlock Powerful Ideas ⚡</h1>
+    <p>Login to access curated content ideas for creators of all ages.</p>
+    <ul class="notice">
+      <li>Login required</li>
+      <li>4 free ideas per day</li>
+      <li>Premium unlocks with points (not cash)</li>
+      <li>Child-safe & AdSense-ready</li>
+    </ul>
+    <button onclick="showAuth()">Unlock Platform</button>
   </div>
 </section>
 
 <!-- AUTH -->
 <section id="auth" class="hidden">
   <div class="card">
-    <h2>Login / Sign Up</h2>
-    <input id="nameInput" placeholder="Your name">
+    <h2>Welcome</h2>
+    <input id="nameInput" aria-label="Your name" placeholder="Enter your name">
+    <label class="notice">
+      <input type="checkbox" id="consent"> I have permission to use this platform
+    </label>
     <button onclick="login()">Continue</button>
-    <p style="font-size:13px;color:var(--muted)">
-      By continuing, you agree to our Terms & Privacy Policy.
-    </p>
   </div>
 </section>
 
 <!-- DASHBOARD -->
 <section id="dashboard" class="hidden">
-  <div class="card">
-    <h2>Welcome, <span id="dashName"></span> 👋</h2>
-    <p>Points: <strong id="points">10</strong></p>
-    <p>Free ideas today: <strong>4</strong></p>
-  </div>
+  <div class="grid">
+    <div class="card">
+      <h2>Hello, <span id="dashName"></span> 👋</h2>
+      <p>Points: <strong id="points">10</strong></p>
+      <p>Free ideas today: <strong id="freeLeft">4</strong></p>
+      <p class="notice">Daily free ideas reset automatically.</p>
+    </div>
 
-  <div class="card">
-    <h3>Select Category</h3>
-    <select id="category" onchange="loadIdeas()">
-      <option>Education (Kids & Teens)</option>
-      <option>Business & Entrepreneurship</option>
-      <option>YouTube Content</option>
-      <option>TikTok Ideas</option>
-      <option>Instagram Reels</option>
-      <option>Personal Growth</option>
-    </select>
-  </div>
+    <div class="card">
+      <h3>Find Ideas</h3>
+      <input id="search" placeholder="Search ideas…" oninput="loadIdeas()">
+      <select id="category" onchange="loadIdeas()">
+        <option>Kids & Teens – Education</option>
+        <option>Business & Entrepreneurship</option>
+        <option>YouTube Content</option>
+        <option>TikTok & Short Videos</option>
+        <option>Instagram Reels</option>
+        <option>Personal Growth</option>
+      </select>
+    </div>
 
-  <div class="card">
-    <h3>Ideas</h3>
-    <div id="ideas"></div>
-    <button id="unlockBtn" class="secondary hidden" onclick="unlockMore()">
-      Unlock More Ideas (5 Points)
-    </button>
-  </div>
+    <div class="card">
+      <h3>Ideas</h3>
+      <span class="badge">4 Free • Premium Locked</span>
+      <div id="ideas"></div>
+      <button class="outline" onclick="unlockPremium()">Unlock More (5 Points)</button>
+      <button class="ghost" onclick="saveFavorites()">Save Favorites</button>
+    </div>
 
-  <div class="card">
-    <h3>Founder Earnings (Safe Mode)</h3>
-    <p>Total Unlocks: <strong id="earnings">0</strong></p>
-    <p style="font-size:13px;color:var(--muted)">
-      Earnings are tracked and paid only via parent/guardian or business account.
-    </p>
+    <div class="card">
+      <h3>Referrals</h3>
+      <p class="notice">Invite friends to earn points.</p>
+      <input id="refLink" readonly>
+      <button onclick="copyRef()">Copy Referral Link</button>
+    </div>
+
+    <div class="card">
+      <h3>How Premium Works</h3>
+      <p class="notice">
+        Points are internal credits and have no cash value.
+        Monetization is tracked and paid only via parent/guardian or business account.
+      </p>
+    </div>
+
+    <!-- ADMIN / FOUNDER (HIDDEN) -->
+    <div id="admin" class="card hidden">
+      <h3>Founder Dashboard (Admin)</h3>
+      <p>Total Premium Unlocks: <strong id="adminUnlocks">0</strong></p>
+      <p class="notice">Visible to owner only.</p>
+    </div>
   </div>
 </section>
 
 <!-- LEGAL -->
-<section id="legal">
+<section>
   <div class="card">
     <h3>Legal & Safety</h3>
     <p><strong>Owner:</strong> TERRY MUSIMBI</p>
-    <p>Points are not real money. Monetization operates under parental or guardian supervision.</p>
-    <p>No adult content. No unsafe material. Child-safe platform.</p>
+    <p class="notice">
+      Child-safe educational platform. No adult content.
+      Points are not real money. Rate limits and abuse prevention apply.
+    </p>
+    <p class="notice">
+      Monetization operates under parental/guardian supervision or a registered business.
+    </p>
     <p>
       <a href="#">Privacy Policy</a> •
       <a href="#">Terms & Conditions</a> •
-      <a href="#">Children Safety Policy</a>
+      <a href="#">Children Safety Policy</a> •
+      <a href="#">Monetization Disclaimer</a>
     </p>
   </div>
 </section>
 
 <footer>
-  © 2026 IdeaSpark · Owned by TERRY MUSIMBI · All rights reserved
+  © 2026 IdeaSpark™ · Owned by TERRY MUSIMBI · All Rights Reserved
 </footer>
 
 <script>
+/* ---------- STATE ---------- */
 let user=null;
 let points=10;
-let earnings=0;
-let freeLimit=4;
+let dailyFree=4;
+let adminUnlocks=0;
+const OWNER="TERRY MUSIMBI";
 
+/* ---------- DATA ---------- */
 const ideasDB={
-  "Education (Kids & Teens)":[
-    "Explain a science topic using drawings",
-    "Create fun math shortcuts",
+  "Kids & Teens – Education":[
+    "Explain science using drawings",
+    "Fun math shortcuts",
     "Study tips for exams",
     "History in 60 seconds",
     "Daily learning challenge"
   ],
   "Business & Entrepreneurship":[
-    "How to start with no money",
-    "Mistakes new entrepreneurs make",
-    "Simple business ideas for students",
+    "Start small business ideas",
+    "Beginner mistakes to avoid",
     "Online income basics",
-    "Personal branding tips"
+    "Personal branding tips",
+    "Customer growth strategies"
   ],
   "YouTube Content":[
     "Educational shorts ideas",
-    "Beginner-friendly tutorials",
-    "Explainer videos",
+    "Beginner tutorials",
     "Faceless channel ideas",
+    "Explainer videos",
     "Consistency strategies"
   ],
-  "TikTok Ideas":[
+  "TikTok & Short Videos":[
     "Quick tips videos",
-    "Before vs after",
     "Daily motivation clips",
-    "Educational storytelling",
+    "Before vs after",
+    "Storytelling hooks",
     "Growth hacks"
   ],
   "Instagram Reels":[
     "Value-packed reels",
-    "Carousel ideas",
     "Engagement hooks",
+    "Carousel ideas",
     "Brand storytelling",
     "Content calendars"
   ],
   "Personal Growth":[
-    "Daily habits to improve life",
-    "Goal-setting methods",
+    "Daily habits",
+    "Goal setting methods",
+    "Time management",
     "Mindset shifts",
-    "Time management tips",
-    "Confidence building ideas"
+    "Confidence building"
   ]
 };
 
+/* ---------- HELPERS ---------- */
+function todayKey(){ return new Date().toISOString().slice(0,10); }
+function resetDailyIfNeeded(){
+  const k="ideaspark-day";
+  if(localStorage.getItem(k)!==todayKey()){
+    localStorage.setItem(k,todayKey());
+    dailyFree=4;
+    localStorage.setItem("ideaspark-free",dailyFree);
+  }else{
+    dailyFree=parseInt(localStorage.getItem("ideaspark-free")||"4");
+  }
+  document.getElementById("freeLeft").textContent=dailyFree;
+}
 function showAuth(){
   landing.classList.add("hidden");
   auth.classList.remove("hidden");
 }
-
 function login(){
   const name=nameInput.value.trim();
-  if(!name)return alert("Enter your name");
-  user=name;
+  if(!name || !consent.checked) return alert("Enter name and confirm permission.");
   localStorage.setItem("ideasparkUser",name);
   start();
 }
-
 function start(){
   user=localStorage.getItem("ideasparkUser");
-  if(!user)return;
-  nav-auth.classList.add("hidden");
-  nav-user.classList.remove("hidden");
-  userName.textContent=user;
+  if(!user) return;
+  resetDailyIfNeeded();
+  navAuth.classList.add("hidden");
+  navUser.classList.remove("hidden");
+  navName.textContent=user;
   dashName.textContent=user;
   auth.classList.add("hidden");
   landing.classList.add("hidden");
   dashboard.classList.remove("hidden");
+  // referral link (simple)
+  refLink.value=location.origin+location.pathname+"?ref="+encodeURIComponent(user);
+  // admin visibility
+  if(user.toUpperCase()===OWNER){ admin.classList.remove("hidden"); }
   loadIdeas();
 }
+function logout(){ localStorage.clear(); location.reload(); }
 
-function logout(){
-  localStorage.clear();
-  location.reload();
-}
-
+/* ---------- IDEAS ---------- */
 function loadIdeas(){
-  const cat=category.value;
   ideas.innerHTML="";
-  const list=ideasDB[cat];
-  list.forEach((idea,i)=>{
+  const list=ideasDB[category.value]||[];
+  const q=(search.value||"").toLowerCase();
+  list.filter(i=>i.toLowerCase().includes(q)).forEach((idea,i)=>{
     const div=document.createElement("div");
     div.className="idea";
-    if(i>=freeLimit)div.classList.add("locked");
+    if(i>=dailyFree) div.classList.add("locked");
     div.textContent=idea;
     ideas.appendChild(div);
   });
-  unlockBtn.classList.remove("hidden");
 }
-
-function unlockMore(){
-  if(points<5)return alert("Not enough points");
-  points-=5;
-  freeLimit=999;
-  earnings++;
+function unlockPremium(){
+  if(points<5) return alert("Not enough points");
+  points-=5; dailyFree=99; adminUnlocks++;
+  localStorage.setItem("ideaspark-free",dailyFree);
   document.getElementById("points").textContent=points;
-  document.getElementById("earnings").textContent=earnings;
+  document.getElementById("adminUnlocks").textContent=adminUnlocks;
   loadIdeas();
 }
 
+/* ---------- EXTRAS ---------- */
+function copyRef(){
+  navigator.clipboard.writeText(refLink.value);
+  alert("Referral link copied!");
+}
+function saveFavorites(){
+  alert("Favorites saved (demo). Backend-ready.");
+}
+
+/* ---------- INIT ---------- */
 start();
 </script>
 
 </body>
-</html>
+        </html>
