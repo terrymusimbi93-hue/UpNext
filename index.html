@@ -6,158 +6,170 @@
 <title>IdeaVault</title>
 
 <style>
-body {
-  margin: 0;
-  font-family: Arial, sans-serif;
-  background: #0b0f1a;
-  color: white;
+body{
+  margin:0;
+  font-family:Arial, sans-serif;
+  background:#0b0f1a;
+  color:white;
 }
-header {
-  background: #0d6efd;
-  padding: 15px;
-  text-align: center;
-  font-size: 22px;
-  font-weight: bold;
+header{
+  background:#0d6efd;
+  padding:15px;
+  text-align:center;
+  font-size:22px;
+  font-weight:bold;
 }
-nav {
-  display: flex;
-  justify-content: center;
-  gap: 10px;
-  margin: 15px;
+nav{
+  display:flex;
+  justify-content:center;
+  gap:10px;
+  margin:10px;
 }
-button {
-  background: #0d6efd;
-  border: none;
-  padding: 10px 15px;
-  color: white;
-  border-radius: 6px;
-  cursor: pointer;
+button{
+  background:#0d6efd;
+  border:none;
+  padding:10px 15px;
+  color:white;
+  border-radius:6px;
+  cursor:pointer;
 }
-button:hover {
-  opacity: 0.8;
+button:hover{opacity:.8}
+section{display:none;padding:15px}
+.active{display:block}
+.card{
+  background:#111827;
+  padding:12px;
+  margin:8px 0;
+  border-radius:8px;
 }
-section {
-  display: none;
-  padding: 15px;
+input{
+  width:100%;
+  padding:10px;
+  margin:6px 0;
+  border-radius:5px;
+  border:none;
 }
-.active {
-  display: block;
-}
-.card {
-  background: #111827;
-  padding: 12px;
-  margin: 8px 0;
-  border-radius: 8px;
-}
-input {
-  width: 100%;
-  padding: 10px;
-  margin: 6px 0;
-  border-radius: 5px;
-  border: none;
-}
-a {
-  color: #0d6efd;
-  text-decoration: none;
-}
+a{color:#0d6efd}
+.hidden{display:none}
 </style>
 </head>
 
 <body>
 
-<header>IdeaVault – Unlimited Content Ideas</header>
+<header>IdeaVault – 200+ Ideas Per Category</header>
 
 <nav>
   <button onclick="show('home')">Ideas</button>
   <button onclick="show('signup')">Sign Up</button>
+  <button onclick="show('login')">Login</button>
+  <button onclick="logout()">Logout</button>
   <button onclick="show('affiliate')">Affiliate</button>
 </nav>
 
-<!-- IDEAS PAGE -->
-<section id="home" class="active">
-  <h3>Content Ideas (200 each)</h3>
+<!-- IDEAS -->
+<section id="home">
+  <h3>Content Ideas</h3>
+  <div id="lockedMsg" class="card">
+    🔒 Please login to unlock all ideas
+  </div>
 
-  <h4>🔥 TikTok Ideas</h4>
-  <div id="tiktok"></div>
+  <div id="ideas" class="hidden">
+    <h4>🔥 TikTok</h4><div id="tiktok"></div>
+    <h4>📸 Instagram</h4><div id="instagram"></div>
+    <h4>🎥 YouTube</h4><div id="youtube"></div>
+    <h4>💰 Business</h4><div id="business"></div>
 
-  <h4>📸 Instagram Ideas</h4>
-  <div id="instagram"></div>
-
-  <h4>🎥 YouTube Ideas</h4>
-  <div id="youtube"></div>
-
-  <h4>💰 Business Ideas</h4>
-  <div id="business"></div>
-
-  <div class="card">
-    🔗 Tools I Use:
-    <br>
-    <a href="https://your-affiliate-link.com" target="_blank">
-      Best Creator Tools (Earns You Money)
-    </a>
+    <div class="card">
+      🔗 Recommended Tool:
+      <br>
+      <a href="https://your-affiliate-link.com" target="_blank">
+        Creator Tools (Earns You)
+      </a>
+    </div>
   </div>
 </section>
 
 <!-- SIGN UP -->
-<section id="signup">
+<section id="signup" class="active">
   <h3>Create Account</h3>
-  <input placeholder="Username">
-  <input placeholder="Email">
-  <input placeholder="Password" type="password">
-  <button onclick="alert('Account created!')">Sign Up</button>
-
-  <div class="card">
-    Why sign up?
-    <ul>
-      <li>Unlock all 200+ ideas</li>
-      <li>Weekly updates</li>
-      <li>Exclusive tools</li>
-    </ul>
-  </div>
+  <input id="suUser" placeholder="Username">
+  <input id="suEmail" placeholder="Email">
+  <input id="suPass" type="password" placeholder="Password">
+  <button onclick="signup()">Sign Up</button>
 </section>
 
-<!-- AFFILIATE SIGN UP -->
-<section id="affiliate">
-  <h3>Affiliate Program</h3>
+<!-- LOGIN -->
+<section id="login">
+  <h3>Login</h3>
+  <input id="liUser" placeholder="Username">
+  <input id="liPass" type="password" placeholder="Password">
+  <button onclick="login()">Login</button>
+</section>
 
+<!-- AFFILIATE -->
+<section id="affiliate">
+  <h3>Affiliate Sign Up</h3>
   <input placeholder="Full Name">
   <input placeholder="Email">
   <input placeholder="Payment Method">
-  <button onclick="alert('Affiliate request sent!')">
-    Join Affiliate Program
-  </button>
+  <button onclick="alert('Affiliate request sent!')">Join</button>
 
   <div class="card">
-    💸 Earn Money By:
-    <ul>
-      <li>Sharing your affiliate link</li>
-      <li>Earning commission per click</li>
-      <li>No investment needed</li>
-    </ul>
+    💸 Earn by sharing your link<br>
+    📈 Commission per click
   </div>
 </section>
 
 <script>
 function show(id){
-  document.querySelectorAll("section").forEach(s => s.classList.remove("active"));
+  document.querySelectorAll("section").forEach(s=>s.classList.remove("active"));
   document.getElementById(id).classList.add("active");
 }
 
-function generateIdeas(container, title){
-  let div = document.getElementById(container);
-  for(let i=1;i<=200;i++){
-    let card = document.createElement("div");
-    card.className = "card";
-    card.innerText = title + " Idea #" + i;
-    div.appendChild(card);
+function signup(){
+  localStorage.setItem("user", suUser.value);
+  localStorage.setItem("pass", suPass.value);
+  alert("Account created! Now login");
+  show("login");
+}
+
+function login(){
+  if(liUser.value===localStorage.user && liPass.value===localStorage.pass){
+    localStorage.setItem("logged","yes");
+    unlock();
+    alert("Login successful!");
+    show("home");
+  } else {
+    alert("Wrong details");
   }
 }
 
-generateIdeas("tiktok","TikTok");
-generateIdeas("instagram","Instagram");
-generateIdeas("youtube","YouTube");
-generateIdeas("business","Business");
+function logout(){
+  localStorage.removeItem("logged");
+  location.reload();
+}
+
+function unlock(){
+  lockedMsg.style.display="none";
+  ideas.classList.remove("hidden");
+}
+
+if(localStorage.logged==="yes"){unlock();}
+
+function generate(container,title){
+  for(let i=1;i<=200;i++){
+    let d=document.createElement("div");
+    d.className="card";
+    d.innerText=title+" Idea #"+i;
+    document.getElementById(container).appendChild(d);
+  }
+}
+
+generate("tiktok","TikTok");
+generate("instagram","Instagram");
+generate("youtube","YouTube");
+generate("business","Business");
 </script>
 
 </body>
-  </html>
+</html>
