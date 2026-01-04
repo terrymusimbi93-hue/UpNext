@@ -6,62 +6,70 @@
 <title>IdeaSpark</title>
 
 <style>
-body {
-  margin: 0;
+body{
+  margin:0;
   font-family: Arial, sans-serif;
-  background: #0a0f1f;
-  color: white;
-  text-align: center;
+  background:#050b1a;
+  color:white;
+  text-align:center;
 }
 
-header {
-  background: #0d1b3d;
-  padding: 20px;
+header{
+  background:#0a3cff;
+  padding:22px;
 }
 
-h1 {
-  color: #4da3ff;
+header h1{
+  margin:0;
+  font-size:28px;
 }
 
-.card {
-  background: #121a33;
-  margin: 15px;
-  padding: 20px;
-  border-radius: 12px;
+header p{
+  margin-top:6px;
+  opacity:0.95;
 }
 
-button {
-  padding: 12px 18px;
-  margin: 6px;
-  border: none;
-  border-radius: 8px;
-  background: #4da3ff;
-  color: black;
-  font-weight: bold;
-  cursor: pointer;
+.card{
+  background:#0b1430;
+  margin:16px;
+  padding:22px;
+  border-radius:14px;
 }
 
-button:hover {
-  opacity: 0.85;
+button{
+  padding:14px 20px;
+  margin:6px;
+  border:none;
+  border-radius:12px;
+  background:#0a3cff;
+  color:white;
+  font-size:16px;
+  font-weight:bold;
+  cursor:pointer;
 }
 
-#ideaBox {
-  font-size: 18px;
-  min-height: 60px;
+button:hover{
+  opacity:0.9;
 }
 
-input {
-  padding: 10px;
-  width: 80%;
-  max-width: 250px;
-  border-radius: 6px;
-  border: none;
+#ideaBox{
+  font-size:18px;
+  min-height:70px;
 }
 
-footer {
-  padding: 15px;
-  font-size: 14px;
-  opacity: 0.8;
+input{
+  padding:12px;
+  width:85%;
+  max-width:280px;
+  border-radius:10px;
+  border:none;
+  font-size:15px;
+}
+
+footer{
+  padding:18px;
+  font-size:14px;
+  opacity:0.8;
 }
 </style>
 </head>
@@ -69,27 +77,29 @@ footer {
 <body>
 
 <header>
-  <h1>IdeaSpark 💡</h1>
-  <p>Instant Content Ideas for Creators</p>
+  <h1>IdeaSpark ✨</h1>
+  <p>Instant Content Ideas for Creators 👇</p>
 </header>
 
 <div class="card">
   <button onclick="selectCategory('dance')">Dance</button>
-  <button onclick="selectCategory('comedy')">Comedy</button>
+  <button onclick="selectCategory('comedy')">Comedy</button><br>
   <button onclick="selectCategory('quotes')">Quotes</button>
-  <button onclick="selectCategory('school')">School Life</button>
+  <button onclick="selectCategory('school')">School Life</button><br>
   <button onclick="selectCategory('motivation')">Motivation</button>
 </div>
 
 <div class="card">
-  <div id="ideaBox">Select a category to get ideas</div><br>
+  <div id="ideaBox">Choose a category to get ideas</div><br>
   <button onclick="nextIdea()">Next Idea</button>
 </div>
 
 <div class="card">
-  <h3>Get New Ideas</h3>
+  <h3>Get More Ideas 🔥</h3>
+  <p>Sign up to receive exclusive ideas & updates</p>
   <input type="email" placeholder="Your email"><br><br>
-  <button>Sign Up</button>
+  <button>Sign Up (FREE)</button>
+  <p style="font-size:13px;opacity:0.7;">No spam • No passwords • Free forever</p>
 </div>
 
 <div class="card">
@@ -97,11 +107,11 @@ footer {
 </div>
 
 <footer>
-  IdeaSpark © 2026
+  © 2026 IdeaSpark • Built with ❤️
 </footer>
 
 <script>
-// Visitor counter
+// Visitor Counter
 let visits = localStorage.getItem("ideaspark_visits") || 0;
 visits++;
 localStorage.setItem("ideaspark_visits", visits);
@@ -228,14 +238,14 @@ const ideas = {
   ]
 };
 
-function selectCategory(category) {
+function selectCategory(category){
   currentIdeas = ideas[category];
-  currentIndex = Math.floor(Math.random() * currentIdeas.length);
+  currentIndex = Math.floor(Math.random()*currentIdeas.length);
   document.getElementById("ideaBox").innerText = currentIdeas[currentIndex];
 }
 
-function nextIdea() {
-  if (currentIdeas.length === 0) return;
+function nextIdea(){
+  if(currentIdeas.length===0) return;
   currentIndex = (currentIndex + 1) % currentIdeas.length;
   document.getElementById("ideaBox").innerText = currentIdeas[currentIndex];
 }
